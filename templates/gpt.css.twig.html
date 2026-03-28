@@ -1,0 +1,152 @@
+<style>
+.chat-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+}
+
+.chat-box {
+  height: 400px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ai-spinner {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.user-message {
+  color: #f8f9fa;
+  background-color: #007bff; /* Light green background for user prompt */
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.ai-message {
+  color: #000;
+  background-color: rgba(0,0,0,.075); /* White background for AI response */
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  align-self: flex-end;
+  position: relative;
+}
+
+.ai-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 5px;
+  background-color: #ffffff;
+}
+
+.ai-buttons button {
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.ai-buttons button:focus {
+  outline: none;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+#userInput {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ... Other CSS styles ... */
+
+#sendButton {
+  padding: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: #00c6ca; /* Blue color for the arrow */
+}
+
+#sendicon:disabled,
+#sendButton[disabled]{
+  color: #666666;
+}
+
+#sendButton:focus {
+  outline: none;
+}
+
+/* ... Other CSS styles ... */
+
+
+
+.suggestions-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  gap: 5px; /* Add spacing between pills */
+  position: sticky;
+  top: 5px;
+  background-color: #ffffff;
+}
+
+.suggestion-pill {
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: #00c6ca;
+  color: #f8f9fa;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Responsive styles for mobile */
+@media screen and (max-width: 767px) {
+  .chat-container {
+    max-width: 100%;
+    margin: 10px;
+    padding: 5px;
+  
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  #userInput {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  #sendButton {
+    width: 100%;
+  }
+}
+
+.message-spacer {
+  border: none;
+  height: 10px; /* Adjust the spacing as needed */
+}
+</style>

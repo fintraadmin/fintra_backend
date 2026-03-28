@@ -1,0 +1,48 @@
+# Environment & Configuration files with credentials
+.env
+.env.local
+.env.*.php
+conf/db.conf
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+backfill.log
+
+# Dependencies
+/vendor/
+composer.lock
+
+# Uploads and generated files
+/uploads/*
+!/uploads/.gitkeep
+/documents/*
+!/documents/.gitkeep
+
+# Cache and temp
+/tmp/
+.cache/
+
+# OS files
+Thumbs.db
+.DS_Store
+__MACOSX/
+
+# Test & Debug files
+out.csv
+DetailedStatement.pdf
+
+# Backup files
+*.bkp
+*.old
+
+# Junk files (accidentally committed)
+--location
+-XPOST

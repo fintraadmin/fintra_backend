@@ -1,0 +1,127 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+    <link rel="canonical" href="{{canonical}}" />
+<link rel="stylesheet" href="https://cdn.fintra.co.in/css/credit.css">
+
+    		<script async rel="preconnect" src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+		<script async rel="preconnect" src="https://www.googleoptimize.com/optimize.js?id=OPT-M8MWFL9"></script>
+{% endblock %}
+{% block adsblock %}
+{% endblock %}
+
+{% block navblock %}
+ {% if language == 'hindi' %}
+  <li class="nav-item" ><a  class="nav-link" href="/english/credit-cards-compare/{{ids}}">Compare</a></li>
+ {% endif %}
+ {% if language == 'english' %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi/credit-cards-compare/{{ids}}">Compare (Hindi)</a></li>
+ {% endif %}
+{% endblock %}
+
+{% block contentblock %}
+
+	<div class="container-fluid page-name">
+		<br>
+		<br>
+		<br>
+                <div class="container">
+                        <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/credit-cards"><span property="name">Credit-Cards</span></a> <meta property="position" content="1"> </li>
+       				 <li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/credit-cards-category/{{card1.bank.url}}"><span property="name">{{card1.bank.title}}</span></a> <meta property="position" content="2"></li>
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="{{card1.url}}"><span property="name">{{card1.title}}</span></a> <meta property="position" content="3"></li>
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><span property="name">Compare {{card2.title}}</span><meta property="position" content="4"></li>
+                        </ul>
+                </div>
+          </div>
+
+<div class="container mb-2 credit_card ">
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.title}} <span>vs</span> {{card2.title}}</h1>
+    <div class="row">
+	<div class="col-6 d-block mr-0">
+		<div class=" card">
+                    <div class="card-body">
+			<center>
+				<a href="{{card1.url}}"><img src="{{card1.image}}" style="width:100px;height:60px;" alt="{{card1.title}}">
+                		<p class="title">{{card1.title}}</p></a>
+					
+				<button style="border-width: 1px !important; opacity: 1 !important;"><a href="{{card1.apply_link}}" target="_blank" style=""> Apply Now</a></button>
+			</center>
+            		</div>
+            	</div>
+        </div>
+	 <div class="col-6 d-block second_card ml-0">
+                <div class=" card">
+                    <div class="card-body">
+			<center>
+	    			<a href="{{card2.url}}"><img src="{{card2.image}}" style="width:100px;height:60px;" alt="{{card2.title}}">
+            			<p class="title">{{card2.title}}</p></a>
+				<button style="border-width: 1px !important; opacity: 1 !important;"><a href="{{card2.apply_link}}" target="_blank" style=""> Apply Now</a></button>
+			</center>
+		   </div>
+        	</div>
+    	</div>
+    </div>
+
+	<center>
+            <p class="comparison_head">Joining Fees</p>
+        </center>
+	<div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                	<p>&#8377;{{card1.joining_fees_format}}</p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>&#8377;{{card2.joining_fees_format}}</p>
+		</center>
+            </div>
+        </div>
+
+	 <center>
+            <p class="comparison_head">Editor's Rating</p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                <p>{{card1.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>{{card2.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+    </div>
+
+	<center>
+            <p class="comparison_head">Key Features</p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+               {{card1.features | replace ({'<ul>' : '<ul class="ml-3">' , '<li>' : '<li class="mt-1">'}) | raw }}
+            </div>
+	   <div class="col-6 d-block">
+                {{card2.features | replace ({'<ul>' : '<ul class="ml-3">' , '<li>' : '<li class="mt-1">'}) | raw}}
+            </div>
+        </div>
+   
+	 <center>
+            <p class="comparison_head">Editor's Review</p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;"> 
+                <p>{{card1.review | replace ({'<ul>' : '<ul class="ml-3">' , '<li>' : '<li class="mt-1">'}) | raw}}</p>
+            </div>
+	   <div class="col-6 d-block">
+                <p>{{card2.review | replace ({'<ul>' : '<ul class="ml-3">' , '<li>' : '<li class="mt-1">'}) | raw}}</p>
+            </div>
+        </div>
+</div>
+    <hr>
+	
+	{% embed "similar.ccc.twig.html" %}
+	{% endembed %}
+{% endblock %}

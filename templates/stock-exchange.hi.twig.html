@@ -1,0 +1,28 @@
+{% extends 'base.twig.html' %}
+        {% block contentblock %}
+
+
+        
+        <div class="container-fluid page-name">
+                <div class="container">
+                        <ul>    
+                                <li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+                                <li> NSE </li>
+                        </ul>
+                </div>
+          </div>    
+
+
+<div class="card">
+        <div class="card-body">
+	<p class="card-text">
+        एनएसई कंपनियां
+	<p>
+		<ul>
+		{% for item in list %}
+    			<li class="stock-list"> <a href={{"/#{language}#{item.link}"}} target="_self"> {{item.name}} </a></li>
+		{% endfor %}
+		</ul>
+        </div>
+    </div>
+{% endblock %}

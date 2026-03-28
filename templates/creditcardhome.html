@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{seo.seo_title}}</title>
+    <meta name="description" content="{{seo.seo_description}}">
+        <meta property="og:image" content="{{seo.image}}">
+        <meta property="og:title" content="{{seo.seo_title}}">
+        <meta property="og:description" content="{{seo.seo_description}}">
+ 	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fintrasupport" />
+	<meta name="twitter:title" content="{{seo.seo_title}}" />
+	<meta name="twitter:description" content="{{seo.seo_description}}" />
+	<meta name="twitter:image" content="{{seo.image}}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/home.styles.min.css?h=90de5f6358ce1a0eb92288892a00890a">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+	<script>
+ 		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-105771479-2');
+	</script>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/mutual-funds">Mutual Funds</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/stock-indices/nifty50">NIFTY 50</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/tools">Calculators</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/{{language}}"><span>Home</span></a></li>
+                <li class="breadcrumb-item"><span>Credit Cards</span></li>
+            </ol>
+        </div>
+    </div>
+    <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h1>{{seo.h1}}</h1>
+		<p>{{seo.data}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="article-list">
+        <div class="container">
+	{% for section in sections %}
+            <div class="intro">
+                <h2 class="text-center"> <a  href="{{section.url}}">{{section.heading}} </a></h2>
+                <div class="row articles">
+		{% for item in section.items %}
+                    <div class="col-sm-6 col-md-4 item"><a href="{{item.url}}"><img class="img-fluid img-cc" src="{{item.image}}" alt="{{item.title}}"></a>
+                        <a href="{{item.url}}"><h3 class="name">{{item.title}}</h3></a>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rating</td>
+                                        <td>
+					{% for i in range(1,item.stars_full) %}
+						<i class="fa fa-star shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endfor %}
+					{% if item.stars_half > 0 %}
+						<i class="fa fa-star-half shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endif %}
+					{% if item.stars_empty > 0 %}
+						{% for i in range(0,item.stars_empty-1) %}
+							<i class="fa fa-star shadow-lg" style="color: rgb(238,234,230);"></i>
+    						{% endfor %}
+    					{% endif %}
+
+					{{item.rating}}/5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joining Fees</td>
+                                        <td>&#8377;{{item.joining_fees_format}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+    		{% endfor %}
+                </div>
+    	 	{% endfor %}
+            </div>
+	<!--
+            <div class="intro">
+                <h2 class="text-center">Learn About Credit Cards</h2>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-map-marker icon"></i>
+                    <h3 class="name">Credit Card Basics</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-fire-extinguisher icon"></i>
+                    <h3 class="name">Credit Card Safety</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Credit Card Benefits</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-leaf icon"></i>
+                    <h3 class="name">Credit Card Risks</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-plane icon"></i>
+                    <h3 class="name">Fast</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-phone icon"></i>
+                    <h3 class="name">Mobile-first</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+            </div>
+        </div>
+	-->
+    </div>
+	 <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright ©Fintra 2020</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="/assets/js/script.min.js"></script>
+</body>
+
+</html>

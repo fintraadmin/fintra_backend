@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+            <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKPB77V');</script>
+<!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <title>Credit Cards Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fintra.co.in/assets/css/modern-cards-css.css" rel="stylesheet">
+
+
+</head>
+<body>
+<header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <h1>FindiBankit</h1>
+            </div>
+            
+            <a href="{{tracking_url}}" target="_blank" >Track Application</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Choose Your Credit Card</h1>
+            </div>
+        </section>
+	 <section class="cards-grid">
+	 {% for card in cards %}
+	 <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="{{card.image}}" alt="{{card.title}}" class="card-image">
+                    </div>
+                    <div class="card-content">
+                        <h2>{{card.title}}</h2>
+                        <div class="card-features">
+                            <div class="feature">
+                                <i class="fas fa-ticket-alt"></i>
+                                <p>Joining Fees ₹{{card.joining_fees}}</p>
+                            </div>
+			<!--
+                            <div class="feature">
+                                <i class="fas fa-star"></i>
+                                <p>{{card.rating}}/5</p>
+                            </div> -->
+                            <div class="feature-details hidden">
+                                <ul>
+					{{card.features_findipay|raw}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-details">View Details</button>
+                            <button class="btn-apply" onclick="window.location.href='{{card.a_link}}'">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    		{% endfor %}
+
+
+	<!--
+
+        <div class="card-grid">
+	 {% for card in cards %}
+            <div class="card">
+                <img src="{{card.image}}" alt="{{card.title}}">
+                <div class="card-title"><a href="{{card.url}}" target="_blank">{{card.title}}</a></div>
+                <button class="apply-btn" onclick="window.location.href='{{card.a_link}}'">Apply Now</button>
+                <div class="card-description">{{card.features_findipay|raw}}</div>
+            </div>
+    	{% endfor %}
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 2">
+                <div class="card-title">Credit Card 2</div>
+                <div class="card-description">Ideal for travelers with special perks.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 3">
+                <div class="card-title">Credit Card 3</div>
+                <div class="card-description">Low-interest rates and no annual fees.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 4">
+                <div class="card-title">Credit Card 4</div>
+                <div class="card-description">Cashback on groceries and fuel.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 5">
+                <div class="card-title">Credit Card 5</div>
+                <div class="card-description">Best for building credit history.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+	--!>
+        </div>
+    </div>
+       </section>
+    </main>
+    <!-- Footer with Links -->
+	 <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{tracking_url}}" target="_blank">Application Status</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+<script>
+        // Card details toggle
+        document.querySelectorAll('.btn-details').forEach(button => {
+            button.addEventListener('click', () => {
+                const details = button.closest('.card-content')
+                    .querySelector('.feature-details');
+                details.classList.toggle('hidden');
+                button.textContent = details.classList.contains('hidden') 
+                    ? 'View Details' 
+                    : 'Hide Details';
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            spans.forEach((span, index) => {
+                if (navLinks.classList.contains('show')) {
+                    switch(index) {
+                        case 0:
+                            span.style.transform = 'rotate(45deg)';
+                            break;
+                        case 1:
+                            span.style.opacity = '0';
+                            break;
+                        case 2:
+                            span.style.transform = 'rotate(-45deg)';
+                            break;
+                    }
+                } else {
+                    span.style = '';
+                }
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navLinks.classList.remove('show');
+                mobileMenuBtn.querySelectorAll('span').forEach(span => {
+                    span.style = '';
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
+

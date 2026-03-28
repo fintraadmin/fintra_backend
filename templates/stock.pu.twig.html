@@ -1,0 +1,80 @@
+{% extends 'base.twig.html' %}
+			{% block mainnavblock %}
+			{% endblock %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+    		<link rel="stylesheet" href="/css/custom/stock.css">
+	{% endblock %}
+
+{% block navblock %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi{{relative_url}}">{{company_title}} - Hindi</a></li>
+  <li class="nav-item" ><a class="nav-link" href="/english{{relative_url}}">{{company_name}} - English</a></li>
+{% endblock %}
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+	  		</ul>
+	  	</div>
+	  </div>   
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{company_name}} ਸਹਾਰੇ ਪ੍ਰੈਸ</h1>
+            <div class="row">
+                <div class="col-12 text-center align-self-center">
+                    <div class="subtitle">
+                        <p class="text-left" data="4"> &#8377; {{ltp}}</p>
+             {% if dropped > 0 %}
+                <i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+            {% else %}
+                <i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+            {% endif %}
+            <span class="ltp-sbtext">&#8377;{{priceChange}} ({{pChange}}%)</span>
+           </div>
+                </div>
+            </div>
+            <p class="card-text">ਖੁੱਲਾ(OPEN): <strong>&#8377;{{open_price}}</strong> , ਉੱਚਾ ਦਿਨ( DAY HIGH): <strong>&#8377;{{intradayHigh}}</strong> ,  ਘੱਟ ਦਿਨ (DAY LOW) : <strong>&#8377;{{intradayLow}} </strong> </p>
+            <h6 class="text-muted card-subtitle mb-2">{{industry}}</h6>
+        <span class="ltp-sbtext">{{last_updated}} ਨੂੰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ</span>
+    </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {% if dropped > 0 %}
+                    {{company_name}} ਸਟਾਕ ਪਿਛਲੇ ਕਾਰੋਬਾਰੀ ਸੈਸ਼ਨ ਵਿਚ  {{pChange}}% ਜਾਂ {{priceChange}} {{previousClose}} ਤੋਂ  {{ltp}} ਤੇ ਪਹੁੰਚ ਗਿਆ.
+
+                {% endif %}
+                {% if dropped > 0 %}
+                     {{company_name}}  ਸਟਾਕ ਦੀ ਕੀਮਤ ਪਿਛਲੇ ਕਾਰੋਬਾਰੀ ਦਿਨ ਤੋਂ {{pChange}}% ਜਾਂ  {{priceChange}} ਤੋਂ {{previousClose}}  ਡਾਲਰ ਤੋਂ  {{ltp}} 'ਤੇ ਆ ਗਈ
+                {% endif %}
+              
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+               {{company_name}} ਸਟਾਕ ਦੀ ਕੀਮਤ tra  {{intradayLow}} ਦੇ ਇੰਟ੍ਰਾਡੇ ਉੱਚੇ ਅਤੇ high {{intradayHigh}} ਦੇ ਇੰਟ੍ਰਾਡੇ ਘੱਟ ਸੀ.
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{sectorindex}}  P/E  {{peratiosector}} ਦੇ ਅਨੁਪਾਤ ਦੀ ਤੁਲਨਾ ਵਿਚ ਮੌਜੂਦਾ  {{company_name}} P/E ਅਨੁਪਾਤ {{peratio}} ਹੈ
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} ਦੇ ਪਿਛਲੇ ਕਾਰੋਬਾਰ ਵਿਚ ਸਟਾਕ ਦੀ ਮਾਤਰਾ  {{volume}} ਸ਼ੇਅਰ ਸੀ
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                 {{company_name}}  {{weekHighDate}} ਨੂੰ 52 ਹਫਤੇ ਦਾ ਉੱਚ ਪੱਧਰ {{weekHigh}} ਡਾਲਰ ਸੀ ਅਤੇ {{weekLowDate}} 'ਤੇ 52 ਹਫਤੇ ਦੀ ਉੱਚ ਪੱਧਰ  {{weekLow}} ਸੀ
+            </p>
+        </div>
+    </div>
+
+	{% embed "similar.stocks.twig.html" %}
+	{% endembed %}
+{% endblock %}

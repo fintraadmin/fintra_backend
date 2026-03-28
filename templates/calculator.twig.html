@@ -1,0 +1,178 @@
+
+{% extends 'base.twig.html' %}
+
+	{% block cssblock %}
+    		<script defer src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+		<script defer src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script>
+
+
+		<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+		<script>
+		  window.googletag = window.googletag || {cmd: []};
+		  googletag.cmd.push(function() {
+		    googletag.defineSlot('/22855363343/Calculator-Top-Banner', [300, 250], 'div-gpt-ad-1670522952718-0').addService(googletag.pubads());
+		    googletag.pubads().enableSingleRequest();
+		    googletag.enableServices();
+		  });
+		</script>
+
+	{% endblock %}
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	<br>
+	<br>
+	<br>
+	  	<div class="container">
+				{% set position = 1 %}
+	  		<ul vocab="https://schema.org/" typeof="BreadcrumbList">
+				<li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/{{language_name}}"><span property="name">Home&nbsp;/</span></a>  <meta property="position" content="{{position}}"> </li>
+			  {% for node in nodes|reverse %}
+				{% set position = position + 1 %}
+	  			<li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage"  href="{{node.url}}" ><span property="name">{{node.title}}&nbsp;/</span> </a>  <meta property="position" content="{{position}}"> </li>
+			  {% endfor %}
+	  		</ul>
+	  	</div>
+	  </div>   
+
+	 <div class="container visit">
+		<center>
+        		<h1 class="">{{data.title}}</h1>
+			<!--<center><a href="https://ekaro.in/enkr20221008s16480938" target="_blank"><img src="https://images.fintra.co.in/cms/campaign-axis-myzone.png" alt="Axis Myzone Free Credit Card" height="250" width="550" class="img-fluid"></a></center><br>
+			-->
+			<!-- /22855363343/Calculator-Top-Banner -->
+<div id='div-gpt-ad-1670522952718-0' style='min-width: 300px; min-height: 250px;'>
+  <script>
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1670522952718-0'); });
+  </script>
+</div>
+	   		<p class="text-justify  mt-3">{{data.subtitle1 | raw}}</p><!-- ////some paragraph/// -->
+		</center>
+	 </div>                      
+
+
+	<div class="container visit">
+	   <div class="row border-0">
+	   	<div class="col-lg-6 col-md-6 col-sm-11 col-12 d-block m-auto">
+		<!-- AddToAny BEGIN -->
+		<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+		<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+		<a class="a2a_button_facebook"></a>
+		<a class="a2a_button_twitter"></a>
+		<a class="a2a_button_email"></a>
+		</div>
+		<script>
+		var a2a_config = a2a_config || {};
+		a2a_config.num_services = 4;
+		</script>
+		<script async src="https://static.addtoany.com/menu/page.js"></script>
+		</div>
+		</div>
+		<br>
+			<p><i class="fa fa-bolt fa-2x fa-bounce" style="color:#00c6ca"></i> Try <a href="/english/fintragpt" target="_blank">FintraGPT </a> now. </p>
+	</div>
+		<!-- AddToAny END -->
+	<div class="container calculatorcontent">
+	   <div class="row border-0">
+	   	<div class="col-lg-6 col-md-6 col-sm-11 col-12 d-block m-auto">
+	   	<div class="card border" style="background-color: #F6F8F9; margin-bottom: 30px; box-shadow:1px 1px 5px 0 rgb(0,0,0,.4);">
+	   	<div class="card-body">
+                     <form id="myForm">
+			<input type="hidden" id="id" name="id" value="{{id}}">
+			<input type="hidden" id="language" name="language" value="{{language}}">
+		  	{% for field in data.input.input %}
+			   {% if field.type == 'number' %}
+                      		<div class="form-group">
+                       			<label>{{field.title}}</label>
+					{% if field.readonly == '1' %}
+                       					<input type="number" class="form-control" placeholder="{{field.placeholder}}"  name="{{field.name}}"  id="{{field.name}}" style="border-radius:1px;"  required disabled><br>
+					{% else %}
+                       					<input type="number" class="form-control" placeholder="{{field.placeholder}}"  name="{{field.name}}"  id="{{field.name}}" style="border-radius:1px;"  required><br>
+					{% endif %}
+                       		</div>    
+			   {% endif %}
+			   {% if field.type == 'select' %}
+				<div class="form-group">
+                      			<label>{{field.title}}</label>
+                      				<select class="form-control" id="{{field.name}}" name="{{field.name}}" required>
+							{% for opt in field.options %}
+                      						<option value="{{opt.key}}">{{opt.label}}</option>
+							{% endfor %}
+                      				</select>
+                      		</div>
+			   {% endif %}
+
+			
+                   	{% endfor %}    
+                	<button type="submit" id='sub' class="btn btn-block">{{data.input.submit.title}}</button>
+                    </form>
+	   	</div>
+	   	</div>
+	   	</div>
+ 		<div class="card card-block col-lg-4 col-md-6 col-sm-12" style="display:none;" id="outputcard">
+			<div class="card-body">
+				<p id="output"></p>
+			
+		 {% embed "calculator.css.twig.html" %}
+        	{% endembed %}	
+			<div class="row">
+    				<div class="col-sm-12 text-center">
+        				<button id="btnWhatsapp" class="btnWhatsapp btn btn-md center-block" Style="width: 100px;" > <i class="fa fa-whatsapp icon"></i></button>
+         				<button id="btnShare" data-clipboard-target="#output" class="btnShare btn btn-md center-block" Style="width: 100px;" > <i class="fa fa-clipboard icon"></i></button>
+     				</div>
+			</div>
+			<br>
+			<div class="row">
+    				<div class="col-sm-12 text-center">
+        				<button id="btnapply" class="btnShare btn btn-md center-block" Style="width: 200px;" ><a href="/{{language_name}}/leads?ref={{id}}" target="_blank">Ask Us</a></button>
+     				</div>
+			<br>
+			<br>
+			{% if data.apply_now is not empty %}
+    				<div class="col-sm-12 text-center">
+        				<button id="btnapply" class="btnShare btn btn-md center-block" Style="width: 200px;" ><a href="{{data.apply_now}}" target="_blank">Apply Now</a></button>
+     				</div>
+			{% endif %}
+			</div>
+			</div>
+
+		</div>
+	<div class="container visit">
+		<!--<center>
+		 {% embed "lead.twig.html" %}
+        	{% endembed %}	
+		</center>-->
+                <p class="text-justify  mt-3">{{data.output1 | raw}}</p><!-- ////some paragraph/// -->
+                <p class="text-justify  mt-3">{{data.faq | raw}}</p><!-- ////some paragraph/// -->
+         </div>
+
+	<!--
+		<div class="col-lg-6 col-md-6 col-sm-11 col-12 d-block m-auto">
+           <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th>Summary</th>
+                     <th></th>
+                     <th></th>
+                   </tr>
+                  </thead>
+
+                 <tbody>
+                 </tbody>
+              </table>
+        </div>
+	-->
+	  </div>
+	</div>
+	{% block footerjsblock %} 
+		{% embed "calculator.js.twig.html" %}
+		{% endembed %}
+	{% endblock %}                          
+
+	{% embed "similar.cals.twig.html" %}
+	{% endembed %}
+	{% embed "similar1.blog.twig.html" %}
+	{% endembed %}
+	{% endblock %}
+
+	

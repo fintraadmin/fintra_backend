@@ -1,0 +1,207 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="https://cdn.fintra.co.in/css/credit.css">
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+{% endblock %}
+
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+		<br>
+		<br>
+		<br>
+<!--
+                <div class="container">
+                        <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/Stock/mutual-funds"><span property="name">Mutual Funds</span></a> <meta property="position" content="1"> </li>
+       				 <li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/mutual-fund/{{card1.id}}"><span property="name">{{card1.name}}</span></a> <meta property="position" content="2"></li>
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><span property="name">Compare {{card2.name}}</span><meta property="position" content="3"></li>
+                        </ul>
+                </div>
+-->
+          </div>
+<div class="container mb-2 credit_card ">
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.company_name}} <span>vs</span> {{card2.company_name}} Shares Comparison</h1>
+    <div class="row">
+	<div class="col-6 d-block mr-0">
+		<div class=" card">
+                    <div class="card-body">
+			<center>
+                		<a href="/{{language}}/stock/{{card1.id}}"><p class="title">{{card1.company_name}}</p></a>
+			</center>
+            		</div>
+            	</div>
+        </div>
+	 <div class="col-6 d-block second_card ml-0">
+                <div class=" card">
+                    <div class="card-body">
+			<center>
+            			<a href="/{{language}}/stock/{{card2.id}}"><p class="title">{{card2.company_name}}</p></a>
+			</center>
+		   </div>
+        	</div>
+    	</div>
+    </div>
+
+	<center>
+            <p class="comparison_head">P/E Ratio </p>
+        </center>
+	<div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                	<p>{{card1.peratio}}</p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>{{card2.peratio}}</p>
+		</center>
+            </div>
+        </div>
+
+	 <center>
+            <p class="comparison_head">Editor's Rating</p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                <p>{{card1.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>{{card2.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+    </div>
+
+	{% if card1.volume is defined and card2.volume is defined %}
+	<center>
+            <p class="comparison_head">Last Trading Volume </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		{{card1.volume}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		{{card2.volume}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+
+	{% if card1.pChange is defined and card2.pChange is defined %}
+	<center>
+            <p class="comparison_head">  Price Change (%) </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+			{{card1.pChange}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+			{{card2.pChange}}
+		</center>
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.weekChangeHigh is defined and card2.weekChangeHigh is defined %}
+	<center>
+            <p class="comparison_head">Change from Weekly High (%) </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		{{card1.weekChangeHigh}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		{{card2.weekChangeHigh}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.weekChangeLow is defined and card2.weekChangeLow is defined %}
+        <center>
+            <p class="comparison_head">Change from Weekly Low (%) </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                {{card1.weekChangeLow}}
+                </center>
+            </div>
+           <div class="col-6 d-block">
+                <center>
+                {{card2.weekChangeLow}}
+                </center>
+            </div>
+        </div>
+        {% endif %}
+
+	{% if card1.lump1yr is defined and card2.lump1yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 1 year </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump1yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump1yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.lump2yr is defined and card2.lump2yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 2 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump2yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump2yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.lump5yr is defined and card2.lump5yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 5 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump5yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump5yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+</div>
+    <hr>
+	
+	{% embed "similar.stockscompare.twig.html" %}
+	{% endembed %}
+{% endblock %}

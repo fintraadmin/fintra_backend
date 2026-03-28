@@ -1,0 +1,179 @@
+{# templates/track.twig #}
+{% extends 'baselayout.twig.html' %}
+
+{% block title %}Track Your Application - Loan Portal{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+
+    <!-- Application Details -->
+    <div id="applicationDetails" class="{{ lead_id ? '' : 'hidden' }} bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold">Application Status</h2>
+                {% if tracking_id %}
+                <a href="/track" class="text-blue-500 hover:text-blue-600">Track Another Application</a>
+                {% endif %}
+            </div>
+            
+            <!-- Status Alert -->
+            <div id="statusAlert" class="mb-6"></div>
+            
+            <div class="space-y-6">
+                <!-- Basic Details -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Application ID</p>
+                        <p class="font-medium" id="displayApplicationId">{{ lead_id }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Current Status</p>
+                        <p class="font-medium" id="displayStatus">{{ status }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Loan Amount</p>
+                        <p class="font-medium" id="displayStatus">{{ loan_amount }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Loan Type</p>
+			{% if income_source == "1" %}
+                        <p class="font-medium" id="displayStatus">Personal Loan</p>
+			{% endif %}
+			{% if income_source == "2" %}
+                        <p class="font-medium" id="displayStatus">Business Loan</p>
+			{% endif %}
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Name</p>
+                        <p class="font-medium" id="displayStatus">{{ name }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Phone</p>
+                        <p class="font-medium" id="displayStatus">{{ mobile }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Submitted On</p>
+                        <p class="font-medium" id="displayDate">{{created_at}}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Last Updated</p>
+                        <p class="font-medium" id="displayLastUpdate">{{updated_at}}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Remark</p>
+                        <p class="font-medium" id="remark">{{remark}}</p>
+                    </div>
+                </div>
+
+                <!-- Progress Timeline -->
+                <div class="relative pt-8">
+                    <div class="flex items-center" id="progressSteps"></div>
+                </div>
+
+                <!-- Documents Status -->
+                <div id="documentsSection" class="border-t pt-4 mt-4">
+                    <h3 class="font-medium mb-3">Documents Status</h3>
+			{% if doc_uploaded == 0 %}
+                        <p class="font-medium" style="color:red">{{doc_status}}</p></br>
+                        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  href={{doc_link}}> Upload Now</a>
+			{% endif %}
+                    <div id="documentsList" class="space-y-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const STEPS = {
+    'new': { label: 'Application Submitted', color: 'blue' },
+    'provider_selected': { label: 'Loan Provider Selected', color: 'blue' },
+    'docs_uploaded': { label: 'Documents Uploaded', color: 'blue' },
+    'verification': { label: 'Under Verification', color: 'yellow' },
+    'approved': { label: 'Approved', color: 'green' },
+    'rejected': { label: 'Rejected', color: 'red' }
+};
+
+// Load application details if tracking_id is present
+{% if tracking_id %}
+    loadApplicationDetails('{{ tracking_id }}');
+{% endif %}
+
+document.getElementById('trackForm')?.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const applicationId = document.getElementById('applicationId').value.trim();
+    if (!applicationId) {
+        alert('Please enter an application ID');
+        return;
+    }
+    
+    await loadApplicationDetails(applicationId);
+});
+
+async function loadApplicationDetails(applicationId) {
+    try {
+        const response = await fetch(`/api/track-application/${applicationId}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            displayApplicationDetails(data.application);
+            // Update URL if not already tracking
+            if (!window.location.pathname.includes('/track/')) {
+                window.history.pushState({}, '', `/track/${applicationId}`);
+            }
+        } else {
+            showError(data.message || 'Application not found');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        showError('Failed to fetch application details');
+    }
+}
+
+function showError(message) {
+    const statusAlert = document.getElementById('statusAlert');
+    statusAlert.innerHTML = `
+        <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+            <p>${message}</p>
+        </div>
+    `;
+}
+
+function displayApplicationDetails(application) {
+    // Show details container
+    document.getElementById('applicationDetails').classList.remove('hidden');
+    
+    // Clear any existing errors
+    document.getElementById('statusAlert').innerHTML = '';
+    
+    // Update status alert based on application status
+    const statusColors = {
+        'approved': 'green',
+        'rejected': 'red',
+        'verification': 'yellow'
+    };
+    
+    if (statusColors[application.status]) {
+        const color = statusColors[application.status];
+        document.getElementById('statusAlert').innerHTML = `
+            <div class="bg-${color}-100 border-l-4 border-${color}-500 text-${color}-700 p-4">
+                <p>Application is ${formatStatus(application.status)}</p>
+            </div>
+        `;
+    }
+    
+    // Update basic details
+    document.getElementById('displayApplicationId').textContent = application.application_id;
+    document.getElementById('displayStatus').textContent = formatStatus(application.status);
+    document.getElementById('displayDate').textContent = formatDate(application.created_at);
+    document.getElementById('displayLastUpdate').textContent = formatDate(application.updated_at);
+    
+    updateProgressSteps(application.status);
+    updateDocumentsList(application.documents);
+}
+
+[... rest of the JavaScript functions remain the same ...]
+</script>
+{% endblock %}

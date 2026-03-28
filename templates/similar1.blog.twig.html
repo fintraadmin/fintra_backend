@@ -1,0 +1,18 @@
+{% set title = 'Recommended Blogs' %}
+
+
+<div class="container visit">
+                        <h3>{{title}}</h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+                {% for row in similar_blog %}
+		       {% if row.title is not null %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <img src="{{row.image}}" class="img-fluid" alt="{{row.title}}">
+                                <div class="card-body">
+                                           <h6> <a href="{{row.url}}">{{row.title}}</a></h6><!-- ////place title/// -->
+                                </div>
+                        </div>
+		        {% endif %}
+                {% endfor %}
+                </div>
+ </div>

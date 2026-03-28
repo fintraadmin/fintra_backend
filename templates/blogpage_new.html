@@ -1,0 +1,102 @@
+    <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+        <title>{{seo_title}}</title>
+        <meta name="description" content="{{seo_description}}">
+        <meta name="keywords" content="{{keywords}}">
+        <meta property="og:image" content="{{shareImg}}">
+        <meta property="og:title" content="{{seo_title}}">
+        <meta property="og:description" content="{{seo_description}}">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@fintrasupport" />
+        <meta name="twitter:title" content="{{seo_title}}" />
+        <meta name="twitter:description" content="{{seo_description}}" />
+        <meta name="twitter:image" content="{{shareImg}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--[if gte IE 9]>
+                <link rel="stylesheet" type="text/css" href="css/ie9.css" />
+                <![endif]-->
+        <script async src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-105771479-2');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-2310760204653333",
+                enable_page_level_ads: true
+              });
+        </script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand" href="/">Fintra</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div
+                class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                     {% for item in navigation %}
+                                 <li class="nav-item" role="presentation"><a href="{{ item.href }}" target="_self">{{ item.caption }}</a></li>
+                    {% endfor %}
+                </ul>
+        </div>
+        </div>
+    </nav>
+        <div style="padding-top:50px;">
+            <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/"><span>Home</span></a></li>
+                        <li class="breadcrumb-item"><a href="/blog"><span>Blog</span></a></li>
+                        <li class="breadcrumb-item"><span>{{title}}</span></li>
+            </ol>
+        </div>
+    <header class="masthead" style="background-image:url('https://images.fintra.co.in/cms/blog-bg.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    <div class="post-heading">
+                        <h1 style="color:#fff;">{{title}}</h1>
+                        <span class="meta">Posted by&nbsp;<a href="#">Fintra Editor</a>&nbsp;on  {{created}}</span></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br/>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    {{content | raw}}
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto">
+                    <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Fintra 2020</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.min.js"></script>
+</body>
+
+</html>

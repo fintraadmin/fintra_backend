@@ -1,0 +1,10 @@
+{
+"INTEREST" : "Interest",
+"TOTAL_INVESTMENT" : "Total Investment",
+"PRINCIPAL" : "Principal",
+"DEPOSIT_AMOUNT" : "Deposit Amount",
+"EMPLOYEE_CONTRIBUTION" : "Employee Contribution",
+"EMPLOYER_CONTRIBUTION" : "Employer Contribution",
+"LOAN_AMOUNT" : "Loan Amount",
+"SIP_RETURNS" : "SIP Returns"
+}

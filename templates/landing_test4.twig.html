@@ -1,0 +1,122 @@
+{# templates/step4.twig #}
+{% extends 'baselayout.twig.html' %}
+
+{% block title %}Application Complete - Loan Application{% endblock %}
+
+{% block content %}
+<input type="hidden" name="lead_id" value="{{ lead_id }}">
+<input type="hidden" name="lead_id" value="{{ lead_id }}">
+<input type="hidden" name="lead_id" value="{{ lead_id }}">
+<div class="bg-white shadow-md rounded-lg p-8">
+    <div class="text-center mb-8">
+        <div class="mb-6">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+            </div>
+        </div>
+
+        <h1 class="text-2xl font-bold text-gray-900 mb-4">Application Submitted Successfully!</h1>
+        
+        <div class="bg-gray-50 rounded-lg p-4 mb-6 inline-block">
+            <p class="text-sm text-gray-600 mb-2">Application ID</p>
+            <p class="text-xl font-mono font-bold text-gray-800">{{ lead_id }}</p>
+        </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto space-y-6">
+        <div class="border-b pb-6">
+            <h2 class="text-lg font-semibold mb-3">Next Steps</h2>
+            <ul class="space-y-3 text-gray-600">
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mr-2">1</span>
+                    <span>Our team will review your application within 24-48 business hours</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mr-2">2</span>
+                    <span>You will receive an email confirmation at {{ email }}</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mr-2">3</span>
+                    <span>Selected loan providers will contact you for further processing</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="space-y-4">
+            <h2 class="text-lg font-semibold">Track Your Application</h2>
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-sm text-blue-800 mb-3">
+                    You can track your application status anytime using your Application ID
+                </p>
+                <a href="/english/tracking?lead_id={{ lead_id }}&cid={{cid}}&aid={{aid}}" 
+                   class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+                   onclick="trackEvent('track_application_click', {application_id: '{{ application_id }}'})">
+                    Track Application
+                </a>
+            </div>
+
+            <div class="mt-6 p-4 border rounded-lg">
+                <h3 class="font-medium mb-2">Need Help?</h3>
+                <p class="text-sm text-gray-600 mb-3">
+                    If you have any questions, our support team is here to help
+                </p>
+                <div class="space-y-2">
+                    <p class="text-sm">
+                        <span class="font-medium">Email:</span> 
+                        <a href="mailto:support@example.com" class="text-blue-500 hover:underline">support@example.com</a>
+                    </p>
+                    <p class="text-sm">
+                        <span class="font-medium">Phone:</span> 
+                        <a href="tel:18001234567" class="text-blue-500 hover:underline">1800-123-4567</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="/" 
+               class="text-blue-500 hover:underline"
+               onclick="trackEvent('return_home_click', {application_id: '{{ application_id }}'})">
+                ← Return to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Track page view
+    trackEvent('application_complete_view', {
+        application_id: '{{ lead_id }}',
+        lead_id: '{{ lead_id }}'
+    });
+    
+    // Save application ID to localStorage for future reference
+    localStorage.setItem('last_application_id', '{{ lead_id }}');
+    
+    // Automatically copy application ID when clicked
+    const appIdElement = document.querySelector('.font-mono');
+    if (appIdElement) {
+        appIdElement.addEventListener('click', function() {
+            navigator.clipboard.writeText(this.textContent).then(() => {
+                // Show temporary tooltip
+                const tooltip = document.createElement('div');
+                tooltip.className = 'text-sm text-green-600 mt-2';
+                tooltip.textContent = 'Application ID copied!';
+                this.parentNode.appendChild(tooltip);
+                
+                setTimeout(() => tooltip.remove(), 2000);
+                
+                trackEvent('application_id_copied', {
+                    application_id: '{{ lead_id }}'
+                });
+            });
+        });
+    }
+});
+</script>
+{% endblock %}

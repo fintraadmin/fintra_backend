@@ -1,0 +1,54 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const chatBox = document.getElementById("chat-box");
+    const userInput = document.getElementById("user-input");
+    const suggestionPills = document.getElementById("suggestion-pills");
+
+    function addSuggestion(suggestion) {
+        const suggestionPill = document.createElement("span");
+        suggestionPill.className = "suggestion-pill";
+        suggestionPill.textContent = suggestion;
+        suggestionPill.addEventListener("click", function () {
+            userInput.value = suggestion;
+        });
+        suggestionPills.appendChild(suggestionPill);
+    }
+
+    function addMessage(message, isUser) {
+        const newMessage = document.createElement("div");
+        newMessage.className = isUser ? "user-message" : "ai-message";
+        newMessage.textContent = message;
+        chatBox.appendChild(newMessage);
+    }
+
+    userInput.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+            const userMessage = userInput.value;
+            addMessage("You: " + userMessage, true);
+
+            // Send user message to PHP backend using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://fintra.co.in/api/v2/gpt", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        const aiResponse = xhr.responseText;
+                        addMessage("AI: " + aiResponse, false);
+                    } else {
+                        addMessage("AI: Oops! Something went wrong. Please try again.", false);
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({ message: userMessage }));
+
+            userInput.value = "";
+        }
+    });
+
+    // Add initial suggestion pills
+    addSuggestion("Tell me a joke!");
+    addSuggestion("Explain quantum physics.");
+    // Add more suggestions as needed
+});
+</script>

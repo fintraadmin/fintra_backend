@@ -1,0 +1,38 @@
+{% set hindi_title = 'अन्य जानकारी' %}
+{% set english_title = 'Browse more' %}
+
+{% if language_name == 'english' %}
+	{% set title = english_title %}
+{% elseif language_name == 'hindi' %}
+	{% set title = hindi_title %}
+{% endif %}
+
+<div class="container visit">
+	  		<h3>{{title}}</h3><!-- /////place some heading//// -->
+ 		<div class="d-flex flex-row flex-wrap">
+		{% for row in similar %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <img data-src="{{row.image}}" class="img-fluid lazyload" alt="{{row.title}}">
+ 				<div class="card-body">
+ 				           <h6> <a href="{{row.url}}">{{row.title}}</a></h6><!-- ////place title/// -->
+ 				</div>
+ 			</div>
+		{% endfor %}
+ 		</div>
+ </div>
+
+{% if similar1|length > 1 %}
+<div class="container visit">
+                        <h3>{{title}}</h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+                {% for row in similar1 %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <img data-src="{{row.image}}" class="img-fluid lazyload" alt="{{row.title}}">
+                                <div class="card-body">
+                                           <h6> <a href="{{row.url}}">{{row.title}}</a></h6><!-- ////place title/// -->
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+ </div>	  
+{% endif %}

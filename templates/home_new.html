@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    	<title>{{seo.seo_title}}</title>
+    	<meta name="description" content="{{seo.seo_description}}">
+        <meta property="og:image" content="{{seo.image}}">
+        <meta property="og:title" content="{{seo.seo_title}}">
+        <meta property="og:description" content="{{seo.seo_description}}">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@fintrasupport" />
+        <meta name="twitter:title" content="{{seo.seo_title}}" />
+        <meta name="twitter:description" content="{{seo.seo_description}}" />
+        <meta name="twitter:image" content="{{seo.image}}" />
+	<meta name="verify-admitad" content="de12623d83" />
+    <link rel="stylesheet" href="/assets/css/1.bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/assets/css/fintra.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><img class="logo" alt="Fintra Logo" src="https://images.fintra.co.in/cms/small_logo.jpg"><a class="navbar-brand logo" href="#">Fintra&nbsp;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+		 {% for item in navigation %}
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{item.href}}">{{item.caption}}</a></li>
+    		{% endfor %}
+                </ul>
+        </div>
+        </div>
+    </nav>
+    <main class="page landing-page">
+        <section class="clean-block header">
+            <div class="container">
+                <div class="block-heading">
+                    <h1 class="text-info">{{seo.h1}}</h1>
+                    <p>{{seo.data}}</p>
+                </div>
+                <div class="row justify-content-center">
+		 {% for section in configs.home_sections %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card clean-card text-center">
+                            <div class="card-body info">
+                                <h4 class="card-title"><a href="{{section.url}}">{{section.title}}</a></h4>
+                                <p class="card-text">{{section.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+		  {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section class="clean-block features">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">{{configs.home_h2_1}}</h2>
+                    <p>{{configs.home_h2_1_desc}}</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
+                        <h4>{{configs.home_feature_1_title}}</h4>
+			<p>{{configs.home_feature_1_desc}}</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
+                        <h4>{{configs.home_feature_2_title}}</h4>
+			<p>{{configs.home_feature_2_desc}}</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
+                        <h4>{{configs.home_feature_3_title}}</h4>
+			<p>{{configs.home_feature_3_desc}}</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
+                        <h4>{{configs.home_feature_4_title}}</h4>
+			<p>{{configs.home_feature_4_desc}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block about-us">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info">{{configs.home_h2_2}}</h2>
+                    <p>{{configs.home_h2_2_desc}}</p>
+                </div>
+                <div class="row justify-content-center">
+		{% for blog in blogs %}
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card clean-card text-center">
+                            <div class="card-body info">
+                                <h4 class="card-title"><a href="{{blog.url}}">{{blog.title}}</a></h4>
+                                <p class="card-text">{{blog.content |slice(0,200) |  raw }}...</p>
+                            </div>
+                        </div>
+                    </div>
+		{% endfor %}
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Calculators</h5>
+                    <ul>
+			{% for link in footer.Calculators %}
+                        <li><a href="{{link.url}}">{{link.title}}</a></li>
+			{% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Blogs</h5>
+                    <ul>
+			{% for link in footer.Blogs %}
+                        <li><a href="{{link.url}}">{{link.title}}</a></li>
+			{% endfor %}
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About Us</h5>
+                    <ul>
+                        <li><a href="/privacy_policy.html">Company Policy</a></li>
+                        <li><i class="fa fa-facebook social-icons"></i><a href="https://www.facebook.com/Fintra-714955548629332" target="_blank">Facebook</a></li>
+                        <li><i class="fa fa-linkedin social-icons"></i><a href="https://www.linkedin.com/company/13457034" target="_blank">Linkedin</a></li>
+                        <li><i class="fa fa-twitter social-icons"></i><a href="https://twitter.com/FintraSupport" target="_blank">Twitter</a></li>
+                        <li><i class="fa fa-youtube-play social-icons"></i><a href="https://www.youtube.com/channel/UC13B009CymX4ClgOgXPuiYw" target="_blank">Youtube</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Downloads</h5>
+                    <ul>
+                        <li><a href="{{applink}}" target="_blank">Fintra Android App<img alt="Fintra Android App" src="https://images.fintra.co.in/cms/googleplay-download-1.jpg"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2020 Fintra</p>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="/assets/js/script.min.js?h=037c4117326bceadaedc2681de8afadc"></script>
+</body>
+
+</html>

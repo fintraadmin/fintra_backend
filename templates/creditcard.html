@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{seo.seo_title}}</title>
+    <meta name="description" content="{{seo.seo_description}}">
+        <meta property="og:image" content="{{seo.image}}">
+        <meta property="og:title" content="{{seo.seo_title}}">
+        <meta property="og:description" content="{{seo.seo_description}}">
+ 	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fintrasupport" />
+	<meta name="twitter:title" content="{{seo.seo_title}}" />
+	<meta name="twitter:description" content="{{seo.seo_description}}" />
+	<meta name="twitter:image" content="{{seo.image}}" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+	<script>
+ 		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-105771479-2');
+	</script>
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="/{{language}}">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/mutual-funds">Mutual Funds</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/stock-indices/nifty50">NIFTY 50</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/tools">Calculators</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards"><span>Credit Cards</span></a></li>
+                        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards-category/{{bank.url}}"><span>{{bank.title}} Credit Cards</span></a></li>
+                        <li class="breadcrumb-item"><span>{{title}}</span></li>
+                    </ol>
+                    <div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 class="card-title" style="font-size:1.4rem;">{{seo.h1}}</h1>
+					<img src="{{image}}" style="width: 200px;height: 120px;" alt="{{title}}">
+                                <p class="card-text"></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>{{credit_card_page.category}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{categories}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>{{credit_card_page.fintra_rating}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>
+					{% for i in range(1,stars_full) %}
+						<i class="fa fa-star shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endfor %}
+					{% if stars_half > 0 %}
+						<i class="fa fa-star-half shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endif %}
+					{% if item.stars_empty > 0 %}
+						{% for i in range(0,item.stars_empty-1) %}
+							<i class="fa fa-star shadow-lg" style="color: rgb(238,234,230);"></i>
+    						{% endfor %}
+    					{% endif %}
+						<strong>&nbsp;{{rating}}/5</strong>
+					</p>
+                                    </div>
+                                </div><button class="btn btn-primary" type="button"> <a href="{{apply_link}}" style="color:white;" rel="noopener" target="_blank">{{credit_card_page.apply_now}}</a></button></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <div class="card-body">
+				{% if isSectionPage == 0 %}
+                                <h2 class="card-title">{{seo.subtitle}}</h2>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{credit_card_page.joining_fees}}</td>
+                                                <td>&#8377;{{joining_fees_format}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.renewal_fees}}</td>
+                                                <td>&#8377;{{renewal_fees_format}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.free_lounge_access}}</td>
+                                                <td>{{lounge}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.fuel_surcharge_waiver}}</td>
+                                                <td>{{fuel_surcharge}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.bank}}</td>
+                                                <td>{{bank.title}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.network}}</td>
+                                                <td>{{network}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+			{% endif %}
+				{% if isSectionPage == 1 %}
+					<h2 class="card-title">{{seo.subtitle}}</h2>
+                                	<p class="card-text">{{section_data | raw}}</p>
+				{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div role="tablist" id="accordion-1">
+		{% if section != 'fees' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h2 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">
+				{{credit_card_page.fees}}</a></h2>
+                        </div>
+                        <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{fees | raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/fees">{{title}} {{credit_card_page.fees}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'offers' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h2 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">{{credit_card_page.welcome_offers}}</a></h5>
+                        </div>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{welcome_offers | raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/offers">{{title}} {{credit_card_page.welcome_offers}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'features' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h2 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">{{credit_card_page.features}}</a></h5>
+                        </div>
+                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{features |raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/features">{{title}} {{credit_card_page.features}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'review' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h2 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="#accordion-1 .item-4">{{credit_card_page.editor_review}}</a></h5>
+                        </div>
+                        <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{review |raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/review">{{title}} {{credit_card_page.editor_review}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+                
+		</div>
+            </div>
+	    <div>
+                <h2 class="similar-heading">{{credit_card_page.more_cards}} - {{bank.title}} </h2>
+                <div class="row">
+		{% for item in similar %}
+                    <div class="col col2"><a href="{{item.url}}" ><img src="{{item.image}}" style="width: 100px;height: 60px;" alt="{{item.title}}">
+                        <p>{{item.title}}</p>
+			</a>
+                    </div>
+    		{% endfor %}
+                </div>
+            </div>
+	    <div>
+                <h2 class="similar-heading">{{credit_card_page.compare_cards}} {{title}} </h2>
+                <div class="row">
+		{% for item in similar2 %}
+                    <div class="col col2"><a href="{{item.compare_url}}" ><img src="{{item.image}}" style="width: 100px;height: 60px;" alt="{{item.title}}">
+                        <p>{{item.title}}</p>
+			</a>
+                    </div>
+    		{% endfor %}
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright ©Fintra 2020</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="/assets/js/script.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+    <script>
+		const observer = lozad();
+		observer.observe();
+    </script>
+</body>
+
+</html>

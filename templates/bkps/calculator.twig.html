@@ -1,0 +1,158 @@
+
+{% extends 'base.twig.html' %}
+
+	{% block cssblock %}
+    		<script defer src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+	{% endblock %}
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	<br>
+	<br>
+	<br>
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+			  {% for node in nodes|reverse %}
+	  			<li><a href="{{node.url}}" >{{node.title}} <span>&nbsp;/</span> </a></li>
+			  {% endfor %}
+	  		</ul>
+	  	</div>
+	  </div>   
+
+	 <div class="container visit">
+		<center>
+        		<h1 class="">{{data.title}}</h1>
+	   		<p class="text-justify  mt-3">{{data.subtitle1 | raw}}</p><!-- ////some paragraph/// -->
+		</center>
+	 </div>                      
+
+
+	<div class="container calculatorcontent">
+	   <div class="row border-0">
+	   	<div class="col-lg-6 col-md-6 col-sm-11 col-12 d-block m-auto">
+	   	<div class="card border" style="background-color: #F6F8F9; margin-bottom: 30px; box-shadow:1px 1px 5px 0 rgb(0,0,0,.4);">
+	   	<div class="card-body">
+                     <form id="myForm">
+			<input type="hidden" id="id" name="id" value="{{id}}">
+			<input type="hidden" id="language" name="language" value="{{language}}">
+		  	{% for field in data.input.input %}
+			   {% if field.type == 'number' %}
+                      		<div class="form-group">
+                       			<label>{{field.title}}</label>
+                       					<input type="number" class="form-control" min="1"  name="{{field.name}}"  id="{{field.name}}" style="border-radius:1px;"  required><br>
+                       		</div>    
+			   {% endif %}
+			   {% if field.type == 'select' %}
+				<div class="form-group">
+                      			<label>{{field.title}}</label>
+                      				<select class="form-control" id="{{field.name}}" name="{{field.name}}" required>
+							{% for opt in field.options %}
+                      						<option value="{{opt.key}}">{{opt.label}}</option>
+							{% endfor %}
+                      				</select>
+                      		</div>
+			   {% endif %}
+
+			
+                   	{% endfor %}    
+                	<button type="submit" id='sub' class="btn btn-block">{{data.input.submit.title}}</button>
+                    </form>
+	   	</div>
+	   	</div>
+	   	</div>
+ 		<div class="card card-block col-lg-4 col-md-6 col-sm-12" style="display:none;" id="outputcard">
+			<div class="card-body">
+				<p id="output"></p>
+			</div>
+		</div>
+
+	<div class="container visit">
+                <p class="text-justify  mt-3">{{data.output1 | raw}}</p><!-- ////some paragraph/// -->
+         </div>
+
+	<!--
+		<div class="col-lg-6 col-md-6 col-sm-11 col-12 d-block m-auto">
+           <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th>Summary</th>
+                     <th></th>
+                     <th></th>
+                   </tr>
+                  </thead>
+
+                 <tbody>
+                 </tbody>
+              </table>
+        </div>
+	-->
+	  </div>
+	</div>
+	{% block footerjsblock %} 
+		<script type="text/javascript">
+
+			function objectifyForm(formArray) {
+ 			   	//serialize data function
+    				var returnArray = {};
+    				for (var i = 0; i < formArray.length; i++){
+        				returnArray[formArray[i]['name']] = formArray[i]['value'];
+    				}
+    				return returnArray;
+			}
+
+			function addrows(jsonObject){
+				var markup = '';
+				var style = '';
+				
+   					 	$.each(jsonObject, function(key,val){
+        						console.log("key : "+key+" ; value : "+val);
+							var th = '<th>' + key + '</th>';
+							var td = '<td>' + val + '</td>';
+							var tr = '<tr>' + th + td + '</tr>';
+							markup += tr;
+    						});
+
+				$("table tbody").append(markup);
+
+			}
+
+
+      			$(document).ready(function() {
+         			$("#sub").unbind('click').bind('click', function (e) {
+					console.log('click'); 
+         				var queryString =objectifyForm ($('#myForm').serializeArray());
+					var input  = {};
+					input['input'] = queryString;
+					input['id'] = queryString['id'];
+					input =  JSON.stringify(input);
+					console.log(input);    
+
+
+					$.ajax({
+           					type: "POST",
+           					url: 'https://fintra.co.in/api/v2/calculator',
+           					data: input, // serializes the form's elements.
+           					success: function(data)
+           					{
+               						var result = JSON.parse(data); // show response from the php script.
+							var output = result['data'];
+							var values = result['values'];
+							console.log(output);
+							console.log(values);
+							$('#output').html(output);
+							$('#outputcard').show();
+							addrows(values);
+           					}
+         				});  
+					return false;
+         			});
+      			});
+   		</script>
+	{% endblock %}                          
+
+	{% embed "similar.cals.twig.html" %}
+	{% endembed %}
+	{% endblock %}
+
+	

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>एनएसई शेयर की कीमतें</title>
+    <meta name="description" content="एनएसई पर सूचीबद्ध कंपनियों के शेयर की कीमतों की जांच करें और एनएसई कंपनियों में निवेश करें">
+ <!-- Social Meta -->
+        <meta property="og:image" content="{{shareImg}}">
+        <meta property="og:title" content="एनएसई शेयर की कीमतें">
+        <meta property="og:description" content="एनएसई पर सूचीबद्ध कंपनियों के शेयर की कीमतों की जांच करें और एनएसई कंपनियों में निवेश करें">
+ 	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fintrasupport" />
+	<meta name="twitter:title" content="एनएसई शेयर की कीमतें" />
+	<meta name="twitter:description" content="एनएसई पर सूचीबद्ध कंपनियों के शेयर की कीमतों की जांच करें और एनएसई कंपनियों में निवेश करें" />
+	<meta name="twitter:image" content="{{shareImg}}" />
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css">
+
+	 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/custom/styles.min.css?h=e7ddcdf0a35064e38ab14ab093945bb7">
+    <link rel="stylesheet" href="/css/custom/stock.css">
+
+     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-105771479-2');
+        </script>
+        <link rel="alternate" href="{{android_app_link}}">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+  		(adsbygoogle = window.adsbygoogle || []).push({
+    			google_ad_client: "ca-pub-2310760204653333",
+    			enable_page_level_ads: true
+  		});
+	</script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container"><a class="navbar-brand" href="/{{language}}">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                </ul>
+	   </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">एनएसई - नेशनल स्टॉक एक्सचेंज</h1>
+		<p class="card-text">
+			
+नेशनल स्टॉक एक्सचेंज या एनएसई भारत का सबसे बड़ा स्टॉक एक्सचेंज है। इसमें लगभग 1800 कंपनियां सूचीबद्ध हैं और लगभग 80% कारोबार की मात्रा में योगदान करती हैं।
+		<p>
+	</div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+	<p class="card-text">
+        एनएसई कंपनियां
+	<p>
+		<ul>
+		{% for item in list %}
+    			<li class="stock-list"> <a href={{"/#{language}#{item.link}"}} target="_self"> {{item.name}} </a></li>
+		{% endfor %}
+		</ul>
+        </div>
+    </div>
+    <div class="footer-basic">
+    <footer>
+        <div class="social">
+		<a href="https://www.linkedin.com/company/13457034"><i class="fa fa-linkedin"></i></a>
+		<a href="https://www.facebook.com/Fintra-714955548629332"><i class="fa fa-facebook"></i></a>
+		<a href="https://twitter.com/FintraSupport"><i class="fa fa-twitter"></i></a>
+		<a href="https://instagram.com/fintra.finance"><i class="fa fa-instagram"></i></a>
+	</div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/">होम</a></li>
+            <li class="list-inline-item"><a href="https://fintra.co.in/privacy_policy.html">प्राइवेसी पालिसी</a></li>
+        </ul>
+        <p class="copyright">Fintra © 2020</p>
+    </footer>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+{% extends 'base.twig.html' %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+	{% endblock %}
+
+
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+	  			<li><a href="#" style="color:white;">{{data.title}}</a></li>
+	  		</ul>
+	  	</div>
+	  </div>   
+
+
+	 <div class="container visit">
+		<center>
+        		<h1 class="text-capitalize">{{data.title}}</h1>
+		</center>
+	</div>
+
+	<div class="container visit">
+	  		<h3></h3><!-- ////heading title//// -->
+		<div class="d-flex flex-row flex-wrap">
+    			{% for topic in topics %}
+				<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+	   			<div class="card-body">
+	   					<h5 class="text-capitalize"> {{ topic.title }} </h5><!-- ////about content//// -->
+	   					<p class="text-justify text-capitalize mt-3"></p><!-- ////some paragraph/// -->
+	   					<br>
+	   					<ul class="list-square">
+    						  {% for chapter in topic.chapters %}
+	   						<li><a href="{{ chapter.link }}"> {{ chapter.title }} </a></li><!-- ////link if required//// -->
+    						  {% endfor %}
+	   					</ul>
+	   				</div>
+	   			</div>
+    			{% endfor %}
+	   		</div>	
+	  	</div>
+	  </div>                      
+
+
+	 <div class="container visit">
+	  		<h3 class="text-capitalize">{{seo.subtitle}}</h3>
+	        <table class="table table-striped">
+            	<tbody>
+		{% for item in funds %}
+              	<tr>
+                
+                	<td></td><!-- /////serial no/// -->
+                	<td> <a  href="{{item.url}}">{{item.text}}</a> </td><!-- /////name//// -->
+              	</tr>
+    		{% endfor %}
+            	</tbody>
+       		</table>
+	  </div>                  
+
+	 {% endblock %}
+
+ 

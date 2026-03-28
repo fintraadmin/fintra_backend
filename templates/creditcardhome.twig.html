@@ -1,0 +1,72 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+{% endblock %}
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul>
+                		<li class="breadcrumb-item"><a href="/{{language}}"><span>Home</span></a></li>
+                		<li class="breadcrumb-item"><span>Credit Cards</span></li>
+                        </ul>
+                </div>
+          </div>
+
+    <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+                <h1>{{seo.h1}}</h1>
+		<p>{{seo.data}}</p>
+            </div>
+        </div>
+    </div>
+        <div class="container visit">
+	{% for section in sections %}
+            <div class="intro">
+                <h2 class="text-center"> <a  href="{{section.url}}">{{section.heading}} </a></h2>
+                <div class="d-flex flex-row flex-wrap">
+		{% for item in section.items %}
+                    <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+			<a href="{{item.url}}"><img class="img-fluid lazyload" data-src="{{item.image}}" alt="{{item.title}}"></a>
+			<br>
+                        <a href="{{item.url}}"><h5 class="name">{{item.title}}</h5></a>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rating</td>
+                                        <td>
+					{% for i in range(1,item.stars_full) %}
+						<i class="fa fa-star shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endfor %}
+					{% if item.stars_half > 0 %}
+						<i class="fa fa-star-half shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endif %}
+					{% if item.stars_empty > 0 %}
+						{% for i in range(0,item.stars_empty-1) %}
+							<i class="fa fa-star shadow-lg" style="color: rgb(238,234,230);"></i>
+    						{% endfor %}
+    					{% endif %}
+
+					{{item.rating}}/5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joining Fees</td>
+                                        <td>&#8377;{{item.joining_fees_format}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+    		{% endfor %}
+                </div>
+    	 	{% endfor %}
+            </div>
+{% endblock %}

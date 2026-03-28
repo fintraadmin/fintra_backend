@@ -1,0 +1,62 @@
+#mainNav .navbar-brand {
+  color: #00C6CA;
+}
+
+.post-preview > .post-meta > a:hover {
+  color: #00C6CA;
+}
+
+.post-preview > a > .post-title:hover {
+  color: #00C6CA;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  color: #00C6CA;
+}
+
+header.masthead .site-heading {
+    text-align: center;
+    color: #fff;
+}
+header.masthead .page-heading, header.masthead .site-heading {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+
+@media only screen and (min-width:768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .post-preview > a > .post-title {
+    font-size: 36px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+}

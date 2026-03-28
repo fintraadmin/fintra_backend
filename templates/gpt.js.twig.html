@@ -1,0 +1,294 @@
+<script>
+
+let prompt_uuid;
+
+function hideSpinner() {
+  const spinnerId = document.getElementById('spinner');
+  if (spinnerId) {
+      spinner.remove();
+    }
+}
+
+function showAIMessageWithSpinner() {
+  const chatBox = document.getElementById('chatBox');
+  const aiDiv = document.createElement('div');
+  aiDiv.classList.add('ai-message');
+
+  // Create the spinner with Font Awesome icon
+  const spinner = document.createElement('i');
+  spinner.classList.add('fas', 'fa-spinner', 'fa-spin');
+  spinner.setAttribute('id', 'spinner'); // Set the id for the spinner
+
+  aiDiv.appendChild(spinner);
+
+  chatBox.appendChild(aiDiv);
+  chatBox.appendChild(createSpacer());
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+function sendPrompt() {
+  const userInput = document.getElementById('userInput').value;
+  if (userInput.trim() === '') {
+    return; // Do not proceed if the input is empty
+  }
+
+  // Clear input after sending the prompt
+  document.getElementById('userInput').value = '';
+
+  // Call the backend API with the user's prompt
+  callBackendAPI(userInput);
+}
+
+// ... Other JavaScript functions ...
+
+// Function to handle user input in the input field
+function handleInput() {
+  const userInput = document.getElementById('userInput').value;
+  const submitButton = document.getElementById('sendButton');
+  
+  // Enable or disable the button based on whether there is text entered
+  if (userInput.trim() !== '') {
+    submitButton.disabled = false;
+  } else {
+    submitButton.disabled = true;
+  }
+}
+
+function handleKeyPress(event) {
+  if (event.key === "Enter") {
+    sendPrompt();
+  }
+}
+
+function handleSendButtonClick() {
+  sendPrompt();
+}
+
+// Attach event listener to the "Send" button
+const sendButton = document.getElementById('sendButton');
+sendButton.addEventListener('click', handleSendButtonClick);
+
+// Attach event listener to the input field to handle key press
+const userInputField = document.getElementById('userInput');
+userInputField.addEventListener('keypress', handleKeyPress);
+userInputField.addEventListener('keypress', handleInput);
+
+// Attach event listener to the input field to handle user input
+//const userInputField = document.getElementById('userInput');
+//userInputField.addEventListener('input', handleInput);
+
+// ... Other JavaScript functions ...
+
+
+function callBackendAPI(prompt) {
+  // Replace this with your actual API call to the backend service
+  // For demonstration, we'll use a dummy response.
+  const dummyResponse = "This is a dummy response from the backend.";
+  
+  // Display the user's input in a user message
+  showUserMessage(prompt);
+  
+  // Display the AI response in an AI message
+  //showAIMessage(dummyResponse);
+   showAIMessageWithSpinner();
+   addAIMessage(prompt);
+  
+}
+
+
+function addAIMessage(prompt){
+
+   // Send user message to PHP backend using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://fintra.co.in/api/v2/gpt", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+			hideSpinner();
+			response = JSON.parse(xhr.responseText);
+                        //const aiResponse = xhr.responseText;
+                        const aiResponse = response['ai_response'];
+                        const sugg = response['suggestions'];
+			console.log(aiResponse);
+                        showAIMessage("FintraGPT: " + aiResponse, false);
+  			// Update the pills with the user's input
+			sugg.forEach(addSuggestion);
+  			//addSuggestion(prompt);
+                    } else {
+                        showAIMessage("AI: Oops! Something went wrong. Please try again.", false);
+                    }
+                }
+            };
+            xhr.send(JSON.stringify({ message: prompt , uuid: prompt_uuid, ln: document.getElementById('tempid').getAttribute('data-language')}));
+
+            userInput.value = "";
+
+}
+
+function showUserMessage(message) {
+  const chatBox = document.getElementById('chatBox');
+  const userDiv = document.createElement('div');
+  userDiv.classList.add('user-message');
+  userDiv.textContent = message;
+  chatBox.appendChild(userDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+
+function addSuggestion(suggestion) {
+  const suggestionsContainer = document.getElementById('suggestionsContainer');
+  const pill = document.createElement('div');
+  pill.classList.add('suggestion-pill');
+  pill.textContent = suggestion;
+  pill.setAttribute('data-uuid' , 'system');
+  //pill.onclick = () => applySuggestion(suggestion);
+  pill.addEventListener('click', handleSuggestionClick);
+  suggestionsContainer.appendChild(pill);
+}
+
+// ... Other JavaScript functions ...
+
+// Function to handle user clicking the copy button on the AI message
+function handleCopyClick(event) {
+  const aiResponse = event.target.dataset.response;
+  copyToClipboard(aiResponse);
+}
+
+// Function to handle user clicking the share button on the AI message
+function handleShareClick(event) {
+  const aiResponse = event.target.dataset.response;
+  shareAIResponse(aiResponse);
+}
+
+function showAIMessage(message) {
+  const chatBox = document.getElementById('chatBox');
+  const aiDiv = document.createElement('div');
+  aiDiv.classList.add('ai-message');
+  aiDiv.innerHTML = message;
+
+  // Create the copy button with Font Awesome icon
+  const copyButton = document.createElement('button');
+  copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+  copyButton.dataset.response = message;
+  copyButton.onclick = handleCopyClick;
+
+  // Check if the Web Share API is supported by the browser
+  if (navigator.share) {
+    // Create the share button with Font Awesome icon
+    const shareButton = document.createElement('button');
+    shareButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    shareButton.dataset.response = message;
+    shareButton.onclick = handleWhatsAppShare;
+
+    // Append both copy and share buttons to the AI message div
+    //aiDiv.appendChild(copyButton);
+    //aiDiv.appendChild(whatsappButton);
+  } else {
+    // If Web Share API is not supported, only append the copy button
+    //aiDiv.appendChild(copyButton);
+  }
+
+  chatBox.appendChild(aiDiv);
+  chatBox.appendChild(createSpacer());
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Function to check if WhatsApp is supported
+function isWhatsAppSupported() {
+  const isAndroid = /Android/i.test(navigator.userAgent);
+  const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  return isAndroid || isiOS;
+}
+
+function createSpacer() {
+  const spacer = document.createElement('hr');
+  spacer.classList.add('message-spacer');
+  return spacer;
+}
+
+function copyToClipboard(text) {
+  const tempInput = document.createElement("textarea");
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Copied to clipboard!");
+}
+
+// Function to handle user clicking the "Share on WhatsApp" button
+function handleWhatsAppShare(event) {
+  const aiResponse = event.target.dataset.response;
+  const encodedResponse = encodeURIComponent(aiResponse);
+  const whatsappURL = `whatsapp://send?text=${encodedResponse}`;
+  window.location.href = whatsappURL;
+}
+
+function shareAIResponse(response) {
+  if (navigator.share) {
+    navigator.share({
+      title: "AI Response",
+      text: response,
+    })
+    .then(() => {
+      console.log("Shared successfully!");
+    })
+    .catch((error) => {
+      console.error("Error sharing:", error);
+    });
+  } else {
+    alert("Web Share API is not supported in this browser.");
+  }
+}
+
+// ... Other JavaScript functions ...
+
+
+function filterSuggestions() {
+  const userInput = document.getElementById('userInput').value.trim().toLowerCase();
+  const suggestionPills = document.querySelectorAll('.suggestion-pill');
+  document.getElementById("sendButton").disabled = false;
+  if (userInput.length == 0){
+  	document.getElementById("sendButton").disabled = true;
+  }
+
+  suggestionPills.forEach((pill) => {
+    if (pill.textContent.toLowerCase().includes(userInput)) {
+      pill.style.display = 'block';
+    } else {
+      pill.style.display = 'none';
+    }
+  });
+}
+
+function applySuggestion(suggestion) {
+  document.getElementById('userInput').value = suggestion;
+}
+
+// ... Other JavaScript functions ...
+// Function to handle user clicking or tapping on a suggestion pill
+function handleSuggestionClick(event) {
+  console.log("Handle Sugegstion");
+  const suggestion = event.target.textContent;
+  prompt_uuid = event.target.getAttribute("data-uuid");
+  console.log("Prompt UUID" +  prompt_uuid);
+  applySuggestion(suggestion);
+  focusPromptBar();
+  filterSuggestions();
+}
+
+function focusPromptBar() {
+  const userInputField = document.getElementById('userInput');
+  userInputField.focus();
+}
+
+// Attach event listeners to the suggestion pills for both click and touch events
+const suggestionPills = document.querySelectorAll('.suggestion-pill');
+suggestionPills.forEach((pill) => {
+  pill.addEventListener('click', handleSuggestionClick);
+  pill.addEventListener('touchstart', handleSuggestionClick);
+});
+</script>

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{company_name}} ਸਹਾਰੇ ਕਾ NSE ਪਾਰ ਲੇਟੈਸਟ ਰਾਤੇ  &#8377;{{ltp}}</title>
+    <meta name="description" content="{{company_name}} ਨੇ ਤਾਜ਼ਾ ਕੀਮਤ ਸਾਂਝੀ ਕੀਤੀ ਅਤੇ  {{company_name}} ਦੇ ਸ਼ੇਅਰਾਂ ਵਿੱਚ ਨਿਵੇਸ਼ ਕੀਤਾ">
+ <!-- Social Meta -->
+        <meta property="og:image" content="{{shareImg}}">
+        <meta property="og:title" content="{{company_name}} ਸਹਾਰੇ ਕਾ NSE ਪਾਰ ਲੇਟੈਸਟ ਰਾਤੇ  &#8377;{{ltp}} ">
+        <meta property="og:description" content="{{company_name}} ਨੇ ਤਾਜ਼ਾ ਕੀਮਤ ਸਾਂਝੀ ਕੀਤੀ ਅਤੇ  {{company_name}} ਦੇ ਸ਼ੇਅਰਾਂ ਵਿੱਚ ਨਿਵੇਸ਼ ਕੀਤਾ">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@fintrasupport" />
+    <meta name="twitter:title" content="{{company_name}} ਸਹਾਰੇ ਕਾ NSE ਪਾਰ ਲੇਟੈਸਟ ਰਾਤੇ  &#8377;{{ltp}}" />
+    <meta name="twitter:description" content="{{company_name}} ਨੇ ਤਾਜ਼ਾ ਕੀਮਤ ਸਾਂਝੀ ਕੀਤੀ ਅਤੇ  {{company_name}} ਦੇ ਸ਼ੇਅਰਾਂ ਵਿੱਚ ਨਿਵੇਸ਼ ਕੀਤਾ" />
+    <meta name="twitter:image" content="{{shareImg}}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/custom/styles.min.css?h=e7ddcdf0a35064e38ab14ab093945bb7">
+    <link rel="stylesheet" href="/css/custom/stock.css">
+
+     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-105771479-2');
+        </script>
+        <link rel="alternate" href="{{android_app_link}}">
+	<!--
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-2310760204653333",
+                enable_page_level_ads: true
+        });
+    </script>
+	-->
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+        <div class="container"><a class="navbar-brand" href="/">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/stock-indices/nifty50">ਨਿਫਟੀ 50</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/hindi{{relative_url}}">{{company_title}} - Hindi</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/english{{relative_url}}">{{company_name}} - English</a></li>
+                </ul>
+       </div>
+        </div>
+    </nav>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{company_name}} ਸਹਾਰੇ ਪ੍ਰੈਸ</h1>
+            <div class="row">
+                <div class="col-12 text-center align-self-center">
+                    <div class="subtitle">
+                        <p class="text-left" data="4"> &#8377; {{ltp}}</p>
+             {% if dropped > 0 %}
+                <i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+            {% else %}
+                <i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+            {% endif %}
+            <span class="ltp-sbtext">&#8377;{{priceChange}} ({{pChange}}%)</span>
+           </div>
+                </div>
+            </div>
+            <p class="card-text">ਖੁੱਲਾ(OPEN): <strong>&#8377;{{open_price}}</strong> , ਉੱਚਾ ਦਿਨ( DAY HIGH): <strong>&#8377;{{intradayHigh}}</strong> ,  ਘੱਟ ਦਿਨ (DAY LOW) : <strong>&#8377;{{intradayLow}} </strong> </p>
+            <h6 class="text-muted card-subtitle mb-2">{{industry}}</h6>
+        <span class="ltp-sbtext">{{last_updated}} ਨੂੰ ਅਪਡੇਟ ਕੀਤਾ ਗਿਆ</span>
+    </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {% if dropped > 0 %}
+                    {{company_name}} ਸਟਾਕ ਪਿਛਲੇ ਕਾਰੋਬਾਰੀ ਸੈਸ਼ਨ ਵਿਚ  {{pChange}}% ਜਾਂ {{priceChange}} {{previousClose}} ਤੋਂ  {{ltp}} ਤੇ ਪਹੁੰਚ ਗਿਆ.
+
+                {% endif %}
+                {% if dropped > 0 %}
+                     {{company_name}}  ਸਟਾਕ ਦੀ ਕੀਮਤ ਪਿਛਲੇ ਕਾਰੋਬਾਰੀ ਦਿਨ ਤੋਂ {{pChange}}% ਜਾਂ  {{priceChange}} ਤੋਂ {{previousClose}}  ਡਾਲਰ ਤੋਂ  {{ltp}} 'ਤੇ ਆ ਗਈ
+                {% endif %}
+              
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+               {{company_name}} ਸਟਾਕ ਦੀ ਕੀਮਤ tra  {{intradayLow}} ਦੇ ਇੰਟ੍ਰਾਡੇ ਉੱਚੇ ਅਤੇ high {{intradayHigh}} ਦੇ ਇੰਟ੍ਰਾਡੇ ਘੱਟ ਸੀ.
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{sectorindex}}  P/E  {{peratiosector}} ਦੇ ਅਨੁਪਾਤ ਦੀ ਤੁਲਨਾ ਵਿਚ ਮੌਜੂਦਾ  {{company_name}} P/E ਅਨੁਪਾਤ {{peratio}} ਹੈ
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} ਦੇ ਪਿਛਲੇ ਕਾਰੋਬਾਰ ਵਿਚ ਸਟਾਕ ਦੀ ਮਾਤਰਾ  {{volume}} ਸ਼ੇਅਰ ਸੀ
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                 {{company_name}}  {{weekHighDate}} ਨੂੰ 52 ਹਫਤੇ ਦਾ ਉੱਚ ਪੱਧਰ {{weekHigh}} ਡਾਲਰ ਸੀ ਅਤੇ {{weekLowDate}} 'ਤੇ 52 ਹਫਤੇ ਦੀ ਉੱਚ ਪੱਧਰ  {{weekLow}} ਸੀ
+            </p>
+        </div>
+    </div>
+	{{recos1 | raw}}
+	{{recos2 | raw}}
+     <div class="footer-basic">
+    <footer>
+        <div class="social">
+                <a href="https://www.linkedin.com/company/13457034"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.facebook.com/Fintra-714955548629332"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/FintraSupport"><i class="fa fa-twitter"></i></a>
+                <a href="https://instagram.com/fintra.finance"><i class="fa fa-instagram"></i></a>
+        </div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="/">होम</a></li>
+            <li class="list-inline-item"><a href="https://fintra.co.in/privacy_policy.html">प्राइवेसी पॉलिसी </a></li>
+        </ul>
+        <p class="copyright">Fintra © 2020</p>
+    </footer>
+</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

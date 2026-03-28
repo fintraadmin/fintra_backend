@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>comparison</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css?h=91ee68b712adc9832dd9cef45a9807cb">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">First Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Second Item</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Third Item</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Dropdown </a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span>Home</span></a></li>
+        <li class="breadcrumb-item"><a href="#"><span>Credit Cards</span></a></li>
+    </ol>
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.title}} vs {{card2.title}}</h1>
+    <div class="row">
+        <div class="col" style="/*align-content: center;*/text-align: center;">
+            <div style="align-items: center;"><img src="/assets/img/SBI%20Card%20Prime.png?h=bc5a37e9038ba6fb4ee812e73a3b1800">
+                <p class="title">{{card1.title}}</p>
+            </div>
+        </div>
+        <div class="col col2" style="text-align: center;"><img src="/assets/img/HDFC%20Millennia%20Credit%20Card.png?h=f0a97d79cc0540ba6eb1fcdbc5d8357f">
+            <p class="title">{{card2.title}}</p>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;vertical-align: middle;">
+                <p class="attribute">Joining Fees</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <p>{{card1.joining_fees}}</p>
+            </div>
+            <div class="col col2" style="/*border-left: 5px solid red;*/">
+                <p>{{card2.joining_fees}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Editor's Rating</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col col2">
+                <p>{{card1.rating}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.rating}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Key Features</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col col2">
+                <p>{{card1.features | raw }}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.features | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Editor's Review</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col col2">
+                <p>{{card1.review | raw}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.review | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="similar">
+        <p class="similar-header">Similar to {{card1.title}}</p>
+        <div class="row">
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/ICICI%20Bank%20Coral%20Credit%20Card.jpg?h=1e4d75bfd9ebfe12a6e3c5ce9d702996">
+                <p>SBI Millenia Card</p>
+            </div>
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/ICICI%20Bank%20Coral%20Credit%20Card.jpg?h=1e4d75bfd9ebfe12a6e3c5ce9d702996">
+                <p>SBI Millenia Card</p>
+            </div>
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/ICICI%20Bank%20Coral%20Credit%20Card.jpg?h=1e4d75bfd9ebfe12a6e3c5ce9d702996">
+                <p>SBI Millenia Card</p>
+            </div>
+        </div>
+    </div>
+    <div class="similar">
+        <p class="similar-header">Similar to {{card2.title}}</p>
+        <div class="row">
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/SBI%20Card%20Prime.png?h=bc5a37e9038ba6fb4ee812e73a3b1800">
+                <p>SBI Millenia Card</p>
+            </div>
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/SBI%20Card%20Prime.png?h=bc5a37e9038ba6fb4ee812e73a3b1800">
+                <p>SBI Millenia Card</p>
+            </div>
+            <div class="col similar-col"><img class="similar-img" src="/assets/img/SBI%20Card%20Prime.png?h=bc5a37e9038ba6fb4ee812e73a3b1800">
+                <p>SBI Millenia Card</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

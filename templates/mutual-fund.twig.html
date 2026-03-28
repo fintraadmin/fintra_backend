@@ -1,0 +1,78 @@
+{% extends 'base.twig.html' %}
+			{% block mainnavblock %}
+			{% for item in navigation|slice(0,5) %}
+				<li class="nav-item"><a href="{{item.href}}" class="nav-link">{{item.caption}}</a></li>
+			{% endfor %}
+			{% endblock %}
+	{% block cssblock %}
+    		<link rel="stylesheet" href="/css/custom/stock.css">
+	{% endblock %}
+
+{% block navblock %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi{{relative_url}}">{{name}} - Hindi</a></li>
+{% endblock %}
+
+{% block contentblock %}
+
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul>
+                                <li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+                                <li><a href="/{{language}}/mutual-funds">Mutual Funds<span>&nbsp;/</span></a></li>
+                                <li><a href="#">{{name}}<span></span></a></li>
+                        </ul>
+                </div>
+          </div>
+
+
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{seo.h1}}</h1>
+            <div class="row">
+                <div class="col-12 text-center align-self-center">
+                    <div class="subtitle">
+                        <p class="text-left" data="4"> NAV (direct) :  {{direct_nav}} </p>
+			 {% if dropped > 0 %}
+				<i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+			{% else %}
+				<i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+			{% endif %}
+			<span class="ltp-sbtext">({{direct_nav_prev}})</span>
+		   </div>
+                    <div class="subtitle">
+                        <p class="text-left" data="4"> NAV (regular) :  {{regular_nav}} </p>
+			 {% if dropped > 0 %}
+				<i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+			{% else %}
+				<i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+			{% endif %}
+			<span class="ltp-sbtext">({{regular_nav_prev}})</span>
+		   </div>
+                </div>
+            </div>
+            <h6 class="text-muted card-subtitle mb-2">{{primary_category}} - {{sub_category}}</h6>
+	    <span class="ltp-sbtext">Last Updated  on {{last_updated}}</span>
+	</div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">{{name}} net asset value or NAV  {% if dropped > 0 %} jumped {% else %} dropped {% endif %}  from <strong> {{direct_nav_prev}} </strong> to <strong>{{direct_nav}}</strong> since last working day</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{name}} direct last 1 year returns is {{direct_ret_1y}}% </p>
+            <p class="card-text">{{name}} direct last 3 year returns is {{direct_ret_3y}}% </p>
+            <p class="card-text">{{name}} direct last 5 year returns is {{direct_ret_5y}}% </p>
+            <p class="card-text">{{name}} direct returns since launch  is {{direct_ret_sl}}% </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{name}} asset under management or AUM is {{aum}} crores</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{name}} one year annualised return is {{direct_ret_1y}} compared to benchmark {{benchmark}} one year annualised return of {{benchmark_ret_1y}}</p>
+        </div>
+    </div>
+    </div>
+
+	{% embed "similar.mfs.twig.html" %}
+	{% endembed %}
+{% endblock %}

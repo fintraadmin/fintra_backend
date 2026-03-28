@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{{seo.seo_title}}</title>
+    <meta name="description" content="{{seo.seo_description}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/com.styles.min.css?h=91ee68b712adc9832dd9cef45a9807cb">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
+        <div class="container"><a class="navbar-brand" href="#">Fintra</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/mutual-funds">Mutual Funds</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/stock-indices/nifty50">NIFTY 50</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/{{language}}/tools">Calculators</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards"><span>Credit-Cards</span></a></li>
+        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards-category/{{card1.bank.url}}"><span>{{card1.bank.title}}</span></a></li>
+        <li class="breadcrumb-item"><a href="{{card1.url}}"><span>{{card1.title}}</span></a></li>
+        <li class="breadcrumb-item"><span>Compare {{card2.title}}</span></li>
+    </ol>
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.title}} vs {{card2.title}}</h1>
+    <div class="row">
+        <div class="col" style="text-align: center;">
+            <div style="align-items: center;"><a href="{{card1.url}}"><img src="{{card1.image}}" style="width:100px;height:60px;" alt="{{card1.title}}">
+                <p class="title">{{card1.title}}</p></a>
+            </div>
+        </div>
+        <div class="col col2" style="text-align: center;"><a href="{{card2.url}}"><img src="{{card2.image}}" style="width:100px;height:60px;" alt="{{card2.title}}">
+            <p class="title">{{card2.title}}</p></a>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;vertical-align: middle;">
+                <p class="attribute">Joining Fees</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;">
+            <div class="col" style="">
+                <p>&#8377;{{card1.joining_fees_format}}</p>
+            </div>
+            <div class="col col2" style="/*border-left: 5px solid red;*/">
+                <p>&#8377;{{card2.joining_fees_format}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="text-align: center;">
+                <p class="attribute">Editor's Rating</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;">
+            <div class="col col2">
+                <p>{{card1.rating}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.rating}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Key Features</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:left;margin-left:10px;">
+            <div class="col col2">
+                <p>{{card1.features | raw }}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.features | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Editor's Review</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: left; margin-left:10px;">
+            <div class="col col2">
+                <p>{{card1.review | raw}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.review | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="similar">
+        <p class="similar-header">More comparison with {{card1.title}}</p>
+        <div class="row">
+	{% for item in similar1 %}
+            <div class="col similar-col"><a href="{{item.compare_url}}"><img class="similar-img" src="{{item.image}}" alt="{{item.title}}">
+                <p>{{item.title}}</p></a>
+            </div>
+    	{% endfor %}
+        </div>
+    </div>
+    <div class="similar">
+        <p class="similar-header">More comparison with {{card2.title}}</p>
+        <div class="row">
+	{% for item in similar2 %}
+            <div class="col similar-col"><a href="{{item.compare_url}}"><img class="similar-img" src="{{item.image}}" alt="{{item.title}}">
+                <p>{{item.title}}</p> </a>
+            </div>
+    	{% endfor %}
+        </div>
+    </div>
+	 <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright ©Fintra 2020</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+{% extends 'base.twig.html' %}
+			{% block mainnavblock %}
+			{% for item in navigation %}
+				<li class="nav-item"><a href="{{item.href}}" class="nav-link">{{item.caption}}</a></li>
+			{% endfor %}
+			{% endblock %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+    		<link rel="stylesheet" href="/css/custom/stock.css">
+	{% endblock %}
+
+{% block navblock %}
+  <li class="nav-item" ><a  class="nav-link" href="/english{{relative_url}}">{{company_title}} - English</a></li>
+  <li class="nav-item" ><a class="nav-link" href="/punjabi{{relative_url}}">{{company_name}} - Punjabi</a></li>
+{% endblock %}
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+			  {% for node in nodes|reverse %}
+	  			<li><a href="{{node.url}}" >{{node.title}} <span>&nbsp;/</span> </a></li>
+			  {% endfor %}
+	  		</ul>
+	  	</div>
+	  </div>   
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{seo.h1}}</h1>
+            <div class="row">
+                <div class="col-12 text-center align-self-center">
+                    <div class="subtitle">
+                        <p class="text-left" data="4"> &#8377; {{ltp}}</p>
+             {% if dropped > 0 %}
+                <i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+            {% else %}
+                <i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+            {% endif %}
+            <span class="ltp-sbtext">&#8377;{{priceChange}} ({{pChange}}%)</span>
+           </div>
+                </div>
+            </div>
+            <p class="card-text">ओपनिंग मूल्य: <strong>&#8377;{{open_price}}</strong> , दैनिक उच्चतम मूल्य: <strong>&#8377;{{intradayHigh}}</strong> , दैनिक न्यूनतम मूल्य : <strong>&#8377;{{intradayLow}} </strong> </p>
+            <h6 class="text-muted card-subtitle mb-2">{{industry}}</h6>
+        <span class="ltp-sbtext">{{last_updated}} पर अंतिम अपडेट</span>
+    </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} का शेयर पिछले कारोबारी दिनांक की तुलना में <strong>&#8377;{{previousClose}}</strong> से <strong> &#8377;{{priceChange}}  ({{pChange}}%) </strong> {% if dropped > 0 %} उछाला {% else %} गिरा  {% endif %}  और  <strong>&#8377;{{ltp}}</strong> पर बंद हुआ. 
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}}  शेयर के दिन का अधिकतम मूल्य <strong>&#8377;{{intradayHigh}}</strong> रहा और न्यूनतम मूल्य <strong> &#8377;{{intradayHigh}}</strong> रहा  
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} का  P/E अनुपात <strong>{{peratio}}</strong> है जबकि {{sectorindex}} का P/E अनुपात <strong>{{peratiosector}}</strong> है 
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} के  कुल <strong>{{volume}}</strong> शेयर आज खरीदे बेचे गए 
+            </p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{company_name}} के  आखरी ५२ सप्ताह का अधिकतम मूल्य  <strong>&#8377;{{weekHigh}}</strong>  दिनांक {{weekHighDate}} को था और ५२ सप्ताह का न्यूनतम मूल्य <strong>&#8377;{{weekLow}}</strong> दिनांक {{weekLowDate}} को था 
+            </p>
+        </div>
+    </div>
+
+
+	{% embed "similar.stocks.twig.html" %}
+	{% endembed %}
+{% endblock %}

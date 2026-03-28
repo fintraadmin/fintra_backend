@@ -1,0 +1,21 @@
+{% set hindi_title = 'अन्य जानकारी' %}
+{% set english_title = 'Browse more' %}
+
+{% if language == 'english' %}
+	{% set title = english_title %}
+{% elseif language == 'hindi' %}
+	{% set title = hindi_title %}
+{% endif %}
+
+<div class="container visit">
+	  		<h3>{{title}}</h3><!-- /////place some heading//// -->
+ 		<div class="d-flex flex-row flex-wrap">
+		{% for row in similar_facts %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+ 				<div class="card-body">
+ 				           <h6> <a href="{{row.url}}">{{row.title}}</a></h6><!-- ////place title/// -->
+ 				</div>
+ 			</div>
+		{% endfor %}
+ 		</div>
+ </div>	  

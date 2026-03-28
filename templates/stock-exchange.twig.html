@@ -1,0 +1,37 @@
+ {% extends 'base.twig.html' %}
+	{% block contentblock %}
+
+
+
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul>
+                                <li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+                                <li> NSE </li>
+                        </ul>
+                </div>
+          </div>
+
+
+
+<div class="card">
+        <div class="card-body">
+            <h1 class="card-title">NSE - National Stock Exchange</h1>
+		<p class="card-text">
+			National Stock Exchange or NSE is the biggest stock exchange in India. It has almost 1800 companies listed and contributes to almost 80% of traded volume.
+		<p>
+	</div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+	<p class="card-text">
+		NSE companies
+	<p>
+		<ul>
+		{% for item in list %}
+    			<li class="stock-list"> <a href={{"/#{language}#{item.link}"}} target="_self"> {{item.name}} </a></li>
+		{% endfor %}
+		</ul>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.twig.html' %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic.css">
+	{% endblock %}
+
+
+	{% block contentblock %}
+	 <div class="container visit">
+        	<h1 class="card-title">{{seo.h1}}</h1>
+	</div>
+	<div class="container visit">
+	  	<div class="row">
+	   		<div class="col-lg-4 col-sm-6 col-md-4 col-11 d-block m-auto">
+	   			<div class="card first">
+	   				<img src="" class="img-fluid"><!-- /////image for content////-->	   				<div class="card-body mt-2">
+	   					<h5 class="text-capitalize"></h5><!-- ////about content//// -->
+	   					<p class="text-justify text-capitalize mt-3"><!-- ////some paragraph/// -->
+							  &#8377; {{ltp}}
+							 {% if dropped > 0 %}
+                                				<i class="fa fa-long-arrow-up align-content-end icon-class-up"></i>
+                        				{% else %}
+                                				<i class="fa fa-long-arrow-down align-content-end icon-class"></i>
+                        				{% endif %}
+                        				<span class="ltp-sbtext">&#8377;{{priceChange}} ({{pChange}}%)</span>
+
+						</p>
+            					<p class="text-justify text-capitalize mt-3">OPEN: <strong>&#8377;{{open_price}}</strong> , DAY HIGH: <strong>&#8377;{{intradayHigh}}</strong> , DAY LOW: <strong>&#8377;{{intradayLow}} </strong> </p>
+	   					<br>
+            					<h5 class="text-capitalize">{{industry}}</h6>
+	    					<span class="ltp-sbtext">Last Updated  on {{last_updated}}</span>
+	   					<ul class="list-square">
+	   						<li>
+            							<p class="text-justify mt-3">{{company_name}} stock price  {% if dropped > 0 %} jumped {% else %} dropped {% endif %}  <strong>{{pChange}}% or &#8377;{{priceChange}} </strong> from <strong> &#8377;{{previousClose}} </strong> to <strong>&#8377;{{ltp}}</strong> since last trading day</p>
+							</li>
+	   						<li>
+            							<p class="text-justify mt-3">{{company_name}} stock price was at intraday high of  <strong> &#8377;{{intradayHigh}} </strong>  and intraday low of  <strong> &#8377;{{intradayLow}} </strong></p>
+							</li>
+	   						<li>
+            							<p class="text-justify mt-3">Current {{company_name}} P/E ratio is <strong>{{peratio}}</strong> compared to {{sectorindex}} P/E ratio of <strong>{{peratiosector}}</strong> </p>
+							</li>
+	   						<li>
+            							<p class="text-justify mt-3">{{company_name}} last traded stock volume was <strong> {{volume}}</strong> shares</p>
+							</li>
+	   						<li>
+            						<p class="text-justify mt-3">{{company_name}} 52 week high was  <strong> &#8377;{{weekHigh}}  </strong> on {{weekHighDate}} and 52 week low was <strong> &#8377;{{weekLow}} </strong> on {{weekLowDate}}</p>
+							</li>
+	   					</ul>
+	   				</div>
+	   			</div>
+	   		</div>	
+	  	</div>
+	  </div>  
+	 {% endblock %}
+
+ 

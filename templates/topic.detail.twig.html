@@ -1,0 +1,43 @@
+
+{% extends 'base.twig.html' %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+	{% endblock %}
+
+
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+			  {% for node in nodes|reverse %}
+	  			<li><a href="{{node.url}}" >{{node.title}} <span>&nbsp;/</span> </a></li>
+			  {% endfor %}
+	  		</ul>
+	  	</div>
+	  </div>   
+
+
+	 <div class="container visit">
+		<center>
+        		<h1 class="text-capitalize">{{data.title}}</h1>
+		</center>
+	</div>
+
+	<div class="container visit">
+		<div class="d-flex flex-row flex-wrap">
+    			{% for topic in data.list %}
+				<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+	   			<div class="card-body">
+	   					<h5 class="text-capitalize"> <a href="{{ topic.url }}"> {{ topic.title }} </a></h5><!-- ////about content//// -->
+	   					<p class="text-justify text-capitalize mt-3"></p><!-- ////some paragraph/// -->
+	   				</div>
+	   			</div>
+    			{% endfor %}
+	   		</div>	
+	  	</div>
+	  </div>                      
+	{% endblock %}
+
+

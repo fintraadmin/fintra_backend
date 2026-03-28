@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>{{seo_title}}</title>
+        <meta name="description" content="{{seo_description}}">
+        <meta property="og:image" content="{{shareImg}}">
+        <meta property="og:title" content="{{seo_title}}">
+        <meta property="og:description" content="{{seo_description}}">
+ 	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fintrasupport" />
+	<meta name="twitter:title" content="{{seo_title}}" />
+	<meta name="twitter:description" content="{{seo_description}}" />
+	<meta name="twitter:image" content="{{shareImg}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{% if canonical_url is not empty %}
+		<link rel="canonical" href="{{canonical_url}}" />
+	{% endif %}
+        <link async  href="/css/flexslider.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/line-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/elegant-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/theme-1.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  async href="css/fonts.1.min.css" rel="stylesheet" type="text/css" media="all"/>
+    	<link rel="stylesheet" href="/css/custom/styles.min.css?h=e7ddcdf0a35064e38ab14ab093945bb7">
+   	 <link rel="stylesheet" href="/css/custom/stock.css">
+        <!--[if gte IE 9]>
+                <link rel="stylesheet" type="text/css" href="css/ie9.css" />
+                <![endif]-->
+        <script async src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+	<script>
+ 		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-105771479-2');
+	</script>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-2310760204653333",
+    enable_page_level_ads: true
+  });
+</script>
+    </head>
+
+    <body>
+<!--
+<div class="loader">
+	<div class="spinner">
+		  <div class="double-bounce1"></div>
+		  <div class="double-bounce2"></div>
+		</div>
+</div>
+-->
+<div class="nav-container">
+ <nav class="centered-logo top-bar">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-12 text-center">
+    			<a href="/" title="Fintra logo">
+    			<img class="logo logo-dark" alt="Fintra logo" src="/img/logo_web.png">
+			</a>
+    		</div>
+    	</div>
+    
+    	<div class="row nav-menu">
+    		<div class="col-sm-12 columns text-center">
+    			<ul class="menu">
+				<a></a>
+    				{% for item in navigation %}
+    				 <li><a href="{{ item.href }}" target="_self">{{ item.caption }}</a></li>
+    				{% endfor %}
+    			</ul>
+    		</div>
+    	</div>
+    	
+    	<div class="mobile-toggle">
+    		<i class="icon icon_menu"></i>
+    	</div>
+    	
+    </div>
+    <div class="bottom-border"></div>
+ </nav>
+</div>		
+
+		<div class="main-container">
+		<section class="blog-list-3 bg-white">
+			
+				<div class="blog-snippet-3">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+						<h1> {{title}} </h1>
+						<br>
+						    <img  alt="{{title}}" src="{{shareImg}}">
+						<br>
+						<p> {{content | raw}} </p>
+						<br>
+								<h2> {{msg}} </h2>
+								<a class="store-link" href="{{applink}}" target="_blank"><img alt="Download Fintra app from Play Store" src="/img/google-play.png"></a>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</section>
+		</div>
+	{{recos1 | raw}}
+	{{recos2 | raw}}
+
+<div class="footer-container">
+			<footer class="social bg-secondary-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h2 class="text-white">Feel free to contact us</h2>
+							<a href="mailto:contact@fintra.co.in" class="text-white"><strong>contact@fintra.co.in</strong></a><br>
+							<ul class="social-icons">
+								<li>
+									<a href="https://twitter.com/FintraSupport">
+										<i class="icon social_twitter"></i>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.facebook.com/Fintra-714955548629332">
+										<i class="icon social_facebook"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/company/13457034">
+										<i class="icon social_linkedin"></i>
+									</a>
+								</li>
+							</ul><br>
+							<span class="sub">© Copright 2017 Fintra Financial Services. All Rights Reserved. </span>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	<script src="/js/jquery.min.js"></script>
+        <script src="/js/jquery.plugin.min.js"></script>
+        <script async src="/js/bootstrap.min.js"></script>
+        <script async src="/js/jquery.flexslider-min.js"></script>
+        <script async src="/js/smooth-scroll.min.js"></script>
+        <script async src="/js/skrollr.min.js"></script>
+        <script async src="/js/spectragram.min.js"></script>
+        <script async src="/js/scrollReveal.min.js"></script>
+        <script async src="/js/isotope.min.js"></script>
+        <script async src="/js/twitterFetcher_v10_min.js"></script>
+        <script async src="/js/lightbox.min.js"></script>
+        <script async src="/js/jquery.countdown.min.js"></script>
+        <script async src="/js/scripts.min.js"></script>
+    </body>
+</html>
+

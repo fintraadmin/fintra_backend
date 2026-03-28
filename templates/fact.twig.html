@@ -1,0 +1,28 @@
+
+{% extends 'base.twig.html' %}
+
+
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+			  {% for node in nodes|reverse %}
+	  			<li><a href="{{node.url}}" >{{node.title}} <span>&nbsp;/</span> </a></li>
+			  {% endfor %}
+	  		</ul>
+	  	</div>
+	  </div>   
+
+
+	 <div class="container visit">
+        		<h1 class="">{{data.title}}</h1>
+	   	<p class="text-justify  mt-3">{{data.description | raw}}</p><!-- ////some paragraph/// -->
+	 </div>                      
+	{% embed "similar.facts.twig.html" %}
+	{% endembed %}
+	
+{% endblock %}
+
+

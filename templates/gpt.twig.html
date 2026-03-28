@@ -1,0 +1,40 @@
+{% extends 'base.twig.html' %}
+    
+	{% block adsblock %}
+ 	{% endblock %}
+ {% block cssblock %}
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+		 {% embed "gpt.css.twig.html" %}
+        	{% endembed %}	
+ {% endblock %}
+ {% block contentblock %}
+	<div class="container-fluid">
+	<br>
+	<br>
+
+	<div class="container visit">
+		<div type="hidden" id="tempid"  data-language="{{language}}">
+		</div>
+		<div class="chat-container">
+			<div class="chat-box" id="chatBox">
+      				<div class="ai-message">Hi there! I am FintraGPT , your personalised finance chatbot. Please ask me on any financial topic or select from below</div>
+    			</div>
+    			<div class="input-container">
+      				<input type="text" id="userInput" placeholder="Type your questions here..." oninput="filterSuggestions()">
+      				<button id="sendButton" disabled="true"><i class="fas fa-paper-plane sendicon"></i></button>
+    			</div>
+    			<div class="suggestions-container" id="suggestionsContainer">
+                	{% for prompt in prompts %}
+      				<div class="suggestion-pill" data-uuid="{{prompt.uuid}}">{{prompt.user_prompt}}</div>
+                	{% endfor %}
+      					<!-- Add more suggestion pills here -->
+    			</div>
+  		</div>
+	</div>
+
+	{% block footerjsblock %} 
+		{% embed "gpt.js.twig.html" %}
+		{% endembed %}
+	{% endblock %}                          
+    {% endblock %}

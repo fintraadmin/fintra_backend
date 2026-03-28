@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+            <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PKPB77V');</script>
+<!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8">
+    <title>Credit Cards Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+	.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #607a95;
+            color: #fff;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .apply-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header class="header">
+	 <nav class="nav-container">
+        <div class="logo">FindiPay</div>
+
+	<a href="{{tracking_url}}" target="_blank">Track Applications</a>
+	</nav>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <div class="heading">Choose Your Credit Card</div>
+        <!-- <div >*commission only applicable on new to bank customers </div>-->
+        <div class="card-grid">
+	 {% for card in cards %}
+            <div class="card">
+                <img src="{{card.image}}" alt="{{card.title}}">
+                <div class="card-title"><a href="{{card.url}}" target="_blank">{{card.title}}</a></div>
+                <button class="apply-btn" onclick="window.location.href='{{card.a_link}}'">Apply Now</button>
+                <div class="card-description">{{card.features_findipay|raw}}</div>
+            </div>
+    	{% endfor %}
+	<!--
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 2">
+                <div class="card-title">Credit Card 2</div>
+                <div class="card-description">Ideal for travelers with special perks.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 3">
+                <div class="card-title">Credit Card 3</div>
+                <div class="card-description">Low-interest rates and no annual fees.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 4">
+                <div class="card-title">Credit Card 4</div>
+                <div class="card-description">Cashback on groceries and fuel.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150" alt="Credit Card 5">
+                <div class="card-title">Credit Card 5</div>
+                <div class="card-description">Best for building credit history.</div>
+                <button class="apply-btn">Apply Now</button>
+            </div>
+	-->
+        </div>
+    </div>
+    
+    <!-- Footer with Links -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </footer>
+</body>
+</html>
+
+

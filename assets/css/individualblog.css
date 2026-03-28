@@ -1,0 +1,288 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+}
+html{
+  scroll-behavior:smooth;
+}
+body{
+	font-family:Nunito;
+}
+.navigation {
+	background-color:#fff !important;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+.navigation button{
+	background-color: #00c6ca;
+	outline:none;
+}
+.navigation .navbar-brand img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.7rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation .navbar-brand span:hover{
+  color:black;
+}
+.navigation ul li a{
+    color: rgba(0,0,0,.5);
+    font-weight: 600;
+    font-family: 'Montserrat',sans-serif;
+    font-size:.9rem;
+}
+.navigation ul .home{
+	color:black !important;
+	font-weight: 600;
+  font-family: 'Montserrat',sans-serif;
+}
+.navigation ul li a:hover{
+	color: #212529 !important;
+}
+.navigation ul li a{
+  text-decoration:none;
+  font-family: 'Montserrat',sans-serif;
+  text-transform:uppercase;
+  margin-top:-5px;
+  color: #00c6ca;
+}
+.navigation ul li ul{
+  margin-top:-12px;
+  border-style:none;
+}
+.navigation ul li ul li a{
+  color: blue !important;
+}
+.navigation ul li ul img{
+  height:18px;
+}
+.page-name{
+  padding-top:120px;
+  padding-bottom:5px;
+  background-color: #00c6ca;
+  font-family: 'Montserrat',sans-serif;
+  margin-bottom:20px;
+}
+.page-name ul li{
+  list-style:none;
+   display:inline-block;
+}
+.page-name ul li a{
+  text-decoration:none;
+  color:black;
+  font-size:18px;
+  font-weight:600;
+  list-style:none;
+}
+.page-name ul li span{
+  color:black !important;
+}
+.page-name ul li a:hover{
+  color:#ffff;
+}
+.blogcontent{
+  padding-top:20px;
+  padding-bottom:30px;
+}
+.blogcontent h2{
+  padding-bottom:10px;
+  color:red;
+  font-size:2.2rem;
+}
+.blogcontent span a{
+  text-decoration:none;
+  color:#00c6ca;
+  font-family: Montserrat,sans-serif; 
+  font-size:.9rem;
+  font-weight:bolder;
+}
+.aboutus {
+  padding-bottom:30px;
+  padding-top:30px;
+  margin-top:0px;
+  background-color:#00c6ca!important;
+}
+.aboutus h5{
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: Montserrat,sans-serif;
+}
+.aboutus ul li{
+  list-style:none;
+  font-weight:400;
+  font-family: Montserrat,sans-serif;
+  text-decoration:none;
+  margin-top:5px;
+  font-size:1rem;
+}
+.aboutus .callast{
+  margin-bottom:100px;
+}
+.aboutus .aboutlast{
+  margin-bottom:170px;
+}
+.aboutus .downlast{
+  margin-bottom:200px;
+}
+.aboutus li a{
+  color:white;
+  text-decoration:none;
+}
+.aboutus ul li i{
+  color:white;
+}
+.aboutus ul li a:hover{
+  color:black;
+}
+.aboutus ul li a:hover i{
+  color:black;
+}
+ .aboutus span i {
+   display:none;
+   position:fixed;
+   bottom:100px;
+   right:15px;
+   color:black;
+   padding:5px;
+   color:black;
+   cursor: pointer;
+  padding:2px 8px;
+}
+.aboutus span i:hover{
+  cursor:pointer;
+}
+
+footer{
+  background-color:black;
+  padding-bottom:25px;
+  padding-top:25px;
+}
+footer p{
+  color:white;
+  font-size:1.1rem;
+  text-align:center;
+  margin-bottom:0px;
+}
+
+
+@media (max-width:459px){
+  .page-name{
+    padding-top:85px;
+    padding-bottom:2px;
+  }
+  .page-name ul li a{
+  font-size:15px;
+}
+.aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:460px) and (max-width:574px){
+   .page-name{
+    padding-top:85px;
+    padding-bottom:2px;
+  }
+  .page-name ul li a{
+  font-size:15px;
+}
+  .aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:575px) and (max-width:767px){
+   .page-name{
+    padding-top:85px;
+    padding-bottom:2px;
+  }
+  .page-name ul li a{
+  font-size:15px;
+}
+  .aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:768px) and (max-width:991px){
+   .page-name{
+    padding-top:80px;
+    padding-bottom:2px;
+  }
+  .page-name ul li a{
+  font-size:18px;
+}
+  .navigation .navbar-brand img{
+  width:30px;
+  height:30px;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.2rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation ul li a{
+    font-size:.52rem;
+}
+ .aboutus .callast{
+  margin-bottom:180px;
+}
+
+}
+
+
+@media (min-width:992px) and (max-width:1300px){
+    .navigation .navbar-brand img{
+  width:30px;
+  height:30px;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.2rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation ul li a{
+    font-size:.8rem;
+}
+    .aboutus .callast{
+  margin-bottom:180px;
+}
+.aboutus .aboutlast{
+  margin-bottom:230px;
+}
+.aboutus .downlast{
+  margin-bottom:270px;
+  }
+}

@@ -1,0 +1,145 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+    <link rel="canonical" href="{{canonical}}" />
+<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+{% endblock %}
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul>
+                        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards"><span>Credit Cards</span></a></li>
+			{% if issubtype == true %}
+                        <li class="breadcrumb-item"><a href="/{{language}}/credit-cards-category/{{id}}"><span>{{title}} Credit Cards</span></a></li>
+			{% endif %}
+                        <li class="breadcrumb-item"><span>{{seo.title}}</span></li>
+                        </ul>
+                </div>
+          </div>
+    
+<div class="container-fluid">
+   <div class="features-boxed">
+        <div class="container">
+            <div class="intro">
+		{% if seo.image is defined and seo.image is not empty %}
+		<img class="lazyload" data-src="{{seo.image}}" style="height: 80px;" alt="{{seo.h1}}" />
+		{% endif %}
+                <h1 style="font-size:1.8rem;">{{seo.h1}}</h1>
+                <p class="card-text">{{seo.data}}</p>
+            </div>
+        </div>
+    </div>
+   {% if pagetype == 'bank' and banksections == true %}
+    <div class="article-list">
+        <div class="container">
+            <div style="margin-top: 20px;">
+                <div class="row">
+		  {% if subtype != 'customer-care' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/customer-care">Customer Care</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'redeem' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/redeem">Redeem</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'statement' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/statement">Statement</a></p>
+                    </div>
+		  {% endif %}
+                </div>
+                <div class="row">
+		  {% if subtype != 'bill-payment' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/bill-payment">Bill Payment</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'call' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/call">Call/SMS</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'reward-points' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/reward-points">Rewards</a></p>
+                    </div>
+		  {% endif %}
+                </div>
+                <div class="row">
+		  {% if subtype != 'faq' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/faq">FAQs</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'contact' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/contact">Contact</a></p>
+                    </div>
+		  {% endif %}
+		  {% if subtype != 'moratorium' %}
+                    <div class="col col-features" style="text-align: center;vertical-align: middle;">
+                        <p class="feature-link"><a href="/{{language}}/credit-cards-category/{{id}}/moratorium">Moratorium</a></p>
+                    </div>
+		  {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+   {% endif %}
+   {% if issubtype != False %}
+    <div class="card">
+         <div class="card-body">
+                <p class="card-text">{{data | raw}}</p>
+	</div>
+   </div>
+   {% endif %}
+   {% if issubtype == False %}
+    <div class="article-list">
+        <div class="container visit">
+	{% for section in sections %}
+            <div class="intro">
+		{% if pagetype ==  'bank' and section.items|length > 0 %}
+                	<h2 class="text-center">Top {{title}} {{section.heading}} Cards</h2>
+   		{% endif %}
+                <div class="row articles">
+		{% for item in section.items %}
+                    <div class="col-sm-6 col-md-4 item"><a href="{{item.url}}">
+			<img class="img-fluid img-cc lazyload" data-src="{{item.image}}" alt="{{item.title}}"></a>
+                        <a href="{{item.url}}"><h5 class="name">{{item.title}}</h5></a>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr></tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rating</td>
+                                        <td>
+					{% for i in range(1,item.stars_full) %}
+						<i class="fa fa-star shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endfor %}
+					{% if item.stars_half > 0 %}
+						<i class="fa fa-star-half shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endif %}
+
+					{{item.rating}}/5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joining Fees</td>
+                                        <td>&#8377;{{item.joining_fees_format}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+    		{% endfor %}
+                </div>
+    	 	{% endfor %}
+    	</div>
+    	</div>
+   {% endif %}
+{% endblock %}

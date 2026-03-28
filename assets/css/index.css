@@ -1,0 +1,405 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing:border-box;
+}
+html{
+  scroll-behavior:smooth;
+}
+body{
+	font-family:Nunito;
+}
+.navigation {
+	background-color:#fff !important;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+.navigation button{
+	background-color: #00c6ca;
+	outline:none;
+}
+.navigation .navbar-brand img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.7rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation .navbar-brand span:hover{
+  color:black;
+}
+.navigation ul li a{
+    color: rgba(0,0,0,.5);
+    font-weight: 600;
+    font-family: 'Montserrat',sans-serif;
+    font-size:.9rem;
+}
+.navigation ul .home{
+	color:black !important;
+	font-weight: 600;
+  font-family: 'Montserrat',sans-serif;
+}
+.navigation ul li a:hover{
+	color: #212529 !important;
+}
+.navigation ul li a{
+  text-decoration:none;
+  font-family: 'Montserrat',sans-serif;
+  text-transform:uppercase;
+  margin-top:-5px;
+  color: #00c6ca;
+}
+.navigation ul li ul{
+  margin-top:-12px;
+  border-style:none;
+}
+.navigation ul li ul li a{
+  color: blue !important;
+}
+.navigation ul li ul img{
+  height:18px;
+}
+.finance{
+  padding-bottom:50px;
+  padding-top:150px;
+}
+.finance h1{
+  color: #00c6ca!important;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: Montserrat,sans-serif;
+  padding-bottom:15px;
+}
+.finance p{
+  color: rgba(0,0,0,.5);
+  font-size:1.1rem;
+  text-align:center;
+  margin:auto;
+  font-family: Montserrat,sans-serif;
+  max-width: 420px;
+}
+.middle-section .card-body{
+  padding-top:40px;
+  padding-bottom:40px;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+.middle-section h4{
+  font-weight: 600;
+  font-size: 1em;
+  font-family: Montserrat,sans-serif;
+}
+.middle-section h4:hover a{
+ color: #00c6ca!important;
+ text-decoration:none;
+}
+.middle-section p{
+  font-weight:300;
+    color: rgba(0,0,0,.5);
+  font-family:sans-serif;
+}
+.middle-section .row .last{
+  height:183px;
+}
+.fintra-advantage{
+  padding-bottom:50px;
+  padding-top:50px;
+}
+.fintra-advantage h1{
+  color: #00c6ca!important;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size:2.2rem;
+  font-family: Montserrat,sans-serif;
+  padding-bottom:15px;
+}
+.fintra-advantage p{
+  color: rgba(0,0,0,.5);
+  font-size:1.1rem;
+  margin:auto;
+  max-width: 420px;
+  font-family: Montserrat,sans-serif;
+}
+.texticon{
+  padding-bottom:30px;
+}
+.texticon .fa{
+  color: #00c6ca!important;
+  font-size:2.3rem;
+}
+.texticon h4{
+  font-weight: 600;
+  font-family: Montserrat,sans-serif;
+  font-size: 1.2rem;
+}
+.texticon p {
+  font-family: Montserrat,sans-serif;
+  color: #212529;
+  font-size:.9rem;
+}
+.blog{
+  padding-bottom:50px;
+  padding-top:50px;
+}
+.blog h1{
+  color: #00c6ca!important;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: Montserrat,sans-serif;
+  padding-bottom:15px;
+}
+.blog p{
+  color: rgba(0,0,0,.5);
+  font-size:1.1rem;
+  margin:auto;
+  max-width:500px;
+  font-family: Montserrat,sans-serif;
+}
+.hindiblog .card-body{
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+  padding-top:30px;
+  padding-bottom:30px;
+}
+.hindiblog h4{
+  font-weight: 600;
+  font-size: 1em;
+  font-family: Montserrat,sans-serif;
+}
+.hindiblog h4:hover a{
+ color: #00c6ca!important;
+ text-decoration:none;
+}
+.hindiblog p{
+  font-weight:300;
+    color: rgba(0,0,0,.5);
+  font-family:sans-serif;
+}
+.hindiblog .row .first{
+  height:213px;
+}
+.hindiblog .row .last{
+  height:215px;
+}
+.aboutus {
+  padding-bottom:30px;
+  padding-top:30px;
+  margin-top:70px;
+  background-color:#00c6ca!important;
+}
+.aboutus h5{
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: Montserrat,sans-serif;
+}
+.aboutus ul li{
+  list-style:none;
+  font-weight:400;
+  font-family: Montserrat,sans-serif;
+  text-decoration:none;
+  margin-top:5px;
+  font-size:1rem;
+}
+.aboutus .callast{
+  margin-bottom:100px;
+}
+.aboutus .aboutlast{
+  margin-bottom:150px;
+}
+.aboutus .downlast{
+  margin-bottom:150px;
+}
+.aboutus li a{
+  color:white;
+  text-decoration:none;
+}
+.aboutus ul li i{
+  color:white;
+}
+.aboutus ul li a:hover{
+  color:black;
+}
+.aboutus ul li a:hover i{
+  color:black;
+}
+
+footer{
+  background-color:black;
+  padding-bottom:25px;
+  padding-top:25px;
+}
+footer p{
+  color:white;
+  font-size:1.1rem;
+  text-align:center;
+  margin-bottom:0px;
+}
+
+
+@media (max-width:459px){
+  .navigation ul li a{
+    border-right:0px solid black;
+}
+  .finance h1{
+  font-size:2rem;
+   }
+   .finance p{
+  font-size:1rem;
+  margin:auto;
+  max-width:480px;
+   }
+.fintra-advantage h1{
+  font-size:2rem;
+}
+.fintra-advantage p{
+  color: rgba(0,0,0,.5);
+  font-size:1.1rem;
+  margin:auto;
+  max-width: 420px;
+  font-family: Montserrat,sans-serif;
+}
+.middle-section p{
+  font-size:1rem;
+}
+.blog h1{
+  font-size:2rem;
+}
+.blog p{
+  font-size:1.1rem;
+  margin:auto;
+  max-width: 240px;
+  text-align:center;
+  font-family: Montserrat,sans-serif;
+}
+.hindiblog .row .first{
+  height:230px;
+}
+.hindiblog .row .last{
+  height:230px;
+}
+.aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:460px) and (max-width:574px){
+    .navigation ul li a{
+    border-right:0px solid black;
+}
+  .blog h1{
+  font-size:1.9rem;
+}
+  .aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:575px) and (max-width:767px){
+    .navigation ul li a{
+    border-right:0px solid black;
+}
+  .middle-section .row .last{
+  height:210px;
+   } 
+   .hindiblog .row .first{
+    height:282px;
+   }
+   .hindiblog .row .last{
+    height:282px;
+   }
+     .aboutus .callast{
+  margin-bottom:00px;
+}
+.aboutus .aboutlast{
+  margin-bottom:0px;
+}
+.aboutus .downlast{
+  margin-bottom:0px;
+  }
+}
+
+
+@media (min-width:768px) and (max-width:991px){
+  .navigation .navbar-brand img{
+  width:30px;
+  height:30px;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.2rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation ul li a{
+    font-size:.52rem;
+}
+.middle-section .row .last{
+  height:230px; 
+}
+.hindiblog .row .first{
+    height:330px;
+   }
+   .hindiblog .row .last{
+    height:330px;
+   }
+        .aboutus .callast{
+  margin-bottom:180px;
+}
+
+}
+
+
+@media (min-width:992px) and (max-width:1300px){
+    .navigation .navbar-brand img{
+  width:30px;
+  height:30px;
+}
+.navigation .navbar-brand span{
+  color: #00c6ca;
+  font-size: 1.2rem;
+  font-family: 'Montserrat',sans-serif;
+  font-weight:bolder;
+  margin-left:5px;
+}
+.navigation ul li a{
+    font-size:.8rem;
+}
+.middle-section p{
+  font-size:.8rem;
+}
+.middle-section .row .last{
+  height:170px; 
+}
+.hindiblog .row .first{
+  height:238px;
+}
+.hindiblog .row .last{
+  height:238px;
+}
+    .aboutus .callast{
+  margin-bottom:180px;
+}
+.aboutus .aboutlast{
+  margin-bottom:230px;
+}
+.aboutus .downlast{
+  margin-bottom:270px;
+  }
+}

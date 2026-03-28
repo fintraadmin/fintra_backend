@@ -1,0 +1,80 @@
+{
+ "numOptions" :  3,
+ "options": [
+{
+"name" : "SBI Blue Chip",
+"return" : 18.5,
+"amount"  : 500,
+"type" : "Equity",
+"isin" : "111",
+"group" : 1,
+"selected" :  true
+},
+{
+"name" : "SBI Magnum",
+"return" : 19.5 ,
+"amount"  : 1500,
+"type" : "Equity",
+"group" : 1,
+"isin" : "114"
+},
+{
+"name" : "ICICI Pru",
+"return" : 20.8,
+"amount"  : 1500,
+"type" : "Equity",
+"group" : 1,
+"isin" : "115"
+},
+{
+"name" : "DSP BR Blue Chip",
+"return" : 12,
+"amount"  : 1500,
+"type" : "Debt",
+"group" : 2,
+"isin" : "112",
+"selected" : true
+},
+{
+"name" : "Mirae Fund",
+"return" : 12.5,
+"amount"  : 1500,
+"type" : "Debt",
+"group" : 2,
+"isin" : "116"
+},
+{
+"name" : "Axis Pru",
+"return" : 12.2,
+"amount"  : 1500,
+"type" : "Debt",
+"group" : 2,
+"isin" : "117"
+},
+{
+"name" : "Axis Focussed Blue Chip Debt Fund",
+"return" : 14.9,
+"amount"  : 1000,
+"type" : "Balanced",
+"group" : 3,
+"isin" : "113",
+"selected" : true 
+},
+{
+"name" : "HDFC Magnum",
+"return" : 13.8,
+"amount"  : 1500,
+"type" : "Balanced",
+"group" : 3,
+"isin" : "118"
+},
+{
+"name" : "L&T Pru",
+"return" : 15.0,
+"amount"  : 1500,
+"type" : "Balanced",
+"group" : 3,
+"isin" : "119"
+}
+] 
+}

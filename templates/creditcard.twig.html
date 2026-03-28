@@ -1,0 +1,212 @@
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+    <link rel="canonical" href="{{canonical}}" />
+<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+
+<style>
+h1   {font-size:1.5rem;}
+h2   {font-size:1.5rem;}
+span   {font-size:0.7rem;}
+</style>
+{% endblock %}
+
+{% block adsblock %}
+{% endblock %}
+{% block navblock %}
+ {% if language == 'hindi' %}
+  <li class="nav-item" ><a  class="nav-link" href="/english/credit-card/{{id}}">{{title}} - English</a></li>
+ {% endif %}
+ {% if language == 'english' %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi/credit-card/{{id}}">{{title}} - Hindi</a></li>
+ {% endif %}
+{% endblock %}
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                                <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/{{language}}/credit-cards"><span property="name">Credit Cards</span><span>&nbsp;/</span></a> <meta property="position" content="1"></li>
+                                <li property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" href="/{{language}}/credit-cards-category/{{bank.url}}"> <span property="name">{{bank.title}} Credit Cards</span><span>&nbsp;/</span></a> <meta property="position" content="2"> </li>
+                        	<li property="itemListElement" typeof="ListItem"><span property="name">{{title}}</span><meta property="position" content="3"> </li>
+                        </ul>
+                </div>
+          </div>
+
+<div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h1 style="font-size:1.5rem;">{{seo.h1}}</h1>
+					<img data-src="{{image}}" class="lazyload" style="width: 200px;height: 120px;" alt="{{title}}">
+                                <p class="card-text"></p>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>{{credit_card_page.category}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{categories}}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>{{credit_card_page.fintra_rating}}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>
+					{% for i in range(1,stars_full) %}
+						<i class="fa fa-star shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endfor %}
+					{% if stars_half > 0 %}
+						<i class="fa fa-star-half shadow-lg" style="color: rgb(255,138,0);"></i>
+    					{% endif %}
+					{% if item.stars_empty > 0 %}
+						{% for i in range(0,item.stars_empty-1) %}
+							<i class="fa fa-star shadow-lg" style="color: rgb(238,234,230);"></i>
+    						{% endfor %}
+    					{% endif %}
+						<strong>&nbsp;{{rating}}/5</strong>
+					</p>
+                                    </div>
+                                </div><button class="btn btn-primary" type="button"> <a href="{{apply_link}}" style="color:white;" rel="noopener" target="_blank">{{credit_card_page.apply_now}}</a></button></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card">
+                            <div class="card-body">
+				{% if isSectionPage == 0 %}
+                                <h2>{{seo.subtitle}}</h2>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{{credit_card_page.joining_fees}}</td>
+                                                <td>&#8377;{{joining_fees_format}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.renewal_fees}}</td>
+                                                <td>&#8377;{{renewal_fees_format}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.free_lounge_access}}</td>
+                                                <td>{{lounge}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.fuel_surcharge_waiver}}</td>
+                                                <td>{{fuel_surcharge}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.bank}}</td>
+                                                <td>{{bank.title}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{credit_card_page.network}}</td>
+                                                <td>{{network}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+			{% endif %}
+				{% if isSectionPage == 1 %}
+					<h2>{{seo.subtitle}}</h2>
+                                	<p class="card-text">{{section_data | raw}}</p>
+				{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div role="tablist" id="accordion-1">
+		{% if section != 'fees' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h4 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-1" href="#accordion-1 .item-1">
+				{{credit_card_page.fees}}</a></h4>
+                        </div>
+                        <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{fees | raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/fees">{{title}} {{credit_card_page.fees}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'offers' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h4 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="#accordion-1 .item-2">{{credit_card_page.welcome_offers}}</a></h4>
+                        </div>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{welcome_offers | raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/offers">{{title}} {{credit_card_page.welcome_offers}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'features' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h4 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="#accordion-1 .item-3">{{credit_card_page.features}}</a></h4>
+                        </div>
+                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{features |raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/features">{{title}} {{credit_card_page.features}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+		{% if section != 'review' %} 
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h4 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="#accordion-1 .item-4">{{credit_card_page.editor_review}}</a></h4>
+                        </div>
+                        <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">{{review |raw}}</p>
+                                <a href="/{{language}}/credit-card/{{id}}/review">{{title}} {{credit_card_page.editor_review}}</a>
+                            </div>
+                        </div>
+                    </div>
+		{% endif %}
+                
+		</div>
+            </div>
+	    <div>
+	{% embed "similar.cc.twig.html" %}
+	{% endembed %}
+		<br>
+	<!--
+	   <div class="container visit">
+                <h3 class="similar-heading">{{credit_card_page.more_cards}} - {{bank.title}} </h3>
+                <div class="row">
+		{% for item in similar %}
+                    <div class="col col2"><a href="{{item.url}}" ><img src="{{item.image}}" style="width: 100px;height: 60px;" alt="{{item.title}}">
+                        <p>{{item.title}}</p>
+			</a>
+                    </div>
+    		{% endfor %}
+                </div>
+            </div>
+	    <div>
+	   <div class="container visit">
+                <h3 class="similar-heading">{{credit_card_page.compare_cards}} {{title}} </h3>
+                <div class="row">
+		{% for item in similar2 %}
+                    <div class="col col2"><a href="{{item.compare_url}}" ><img src="{{item.image}}" style="width: 100px;height: 60px;" alt="{{item.title}}">
+                        <p class="card-text">{{item.title}}</p>
+			</a>
+                    </div>
+    		{% endfor %}
+                </div>
+            </div>
+            </div>
+	-->
+	{% endblock %}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    	<meta charset="utf-8">
+        <title>{{seo.seo_title}}</title>
+        <meta name="description" content="{{seo.seo_description}}">
+        <meta property="og:image" content="{{seo.image}}">
+        <meta property="og:title" content="{{seo.seo_title}}">
+        <meta property="og:description" content="{{seo.seo_description}}">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="@fintrasupport" />
+        <meta name="twitter:title" content="{{seo.seo_title}}" />
+        <meta name="twitter:description" content="{{seo.seo_description}}" />
+        <meta name="twitter:image" content="{{seo.image}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="https://images.fintra.co.in/blog.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+
+     <!--[if gte IE 9]>
+                <link rel="stylesheet" type="text/css" href="css/ie9.css" />
+                <![endif]-->
+        <script async src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-105771479-2');
+        </script>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-2310760204653333",
+                enable_page_level_ads: true
+              });
+        </script>
+
+</head>
+<body>
+	                                          <!-- ///////navbar/////-->
+	  	 	<nav class="navbar navbar-expand-md navigation navbar-light fixed-top pt-lg-4 pb-lg-4">
+	  		<div class="container">
+	  			<a href="#" class="navbar-brand"><img src="https://images.fintra.co.in/cms/small_logo.jpg" class="img-fluid" alt="fintra-logo"><span>Fintra</span></a>
+	  			<button class="navbar-toggler" data-target="#mynav" data-toggle="collapse">
+	  				<span class="navbar-toggler-icon"></span>
+	  			</button>
+	  			<div class="collapse navbar-collapse" id="mynav">
+	  				<ul class="navbar-nav ml-auto">
+	  				 {% for item in navigation %}
+	  					<li class="nav-item active"><a href="{{item.href}}" class="nav-link home">{{item.caption}}</a></li>
+	  				{% endfor %}
+	  					<li class="dropdown">
+	  					 <a class="dropdown-toggle" data-toggle="dropdown" href="#">Language</a>
+                             <ul class="dropdown-menu">
+                               <li class="nav-item"><a href="/english" class="nav-link"><img src="english.png" class="img-fluid" alt="english"> English </a></li>
+                               <li class="nav-item"><a href="/hindi" class="nav-link"><img src="hindi.png" class="img-fluid" alt="hindi"> Hindi </a></li>
+                             </ul>
+                         </li>
+	  				</ul>
+	  			</div>
+	  		</div>
+	  	</nav>  
+
+
+	  	                               <!-- ////banner///// -->
+	  <div class="container-fluid banner">
+	  	<center>
+	  	<h1>Personal Finance Blog</h1>
+	  	<span class="subheading">Investing | Credit Cards | Saving | Tax | Insurance</span>
+	  </center>
+	  </div>
+
+
+	                                      <!-- //////blogportion///// -->
+	    <div class="container blogportion">
+	    {% for blog in blogs %}
+	    	<div class="row">
+	    		<div class="col-lg-4 col-md-6 col-sm-10 col-10 d-block m-auto ">
+	    			<img src="{{blog.featured_image}}" alt="{{blog.title}}" class="img-fluid">
+	    		</div>
+	    		<div class="col-lg-8 col-md-10 col-sm-10 col-10 d-block m-auto pl-0 ml-0">
+	    			<a href="{{blog.perma_link}}">
+                        <h2 class="post-title">{{blog.title}}</h2>
+                    </a>
+                    <p>{{blog.body |slice(0,300) |  raw }}... </p>
+                    <p class="post-meta">Posted by&nbsp;<a href="#">Fintra Editor {{blog.created | slice(0,10)}}</a></p>
+	    		</div>
+	    	</div>
+	    	<hr class="line">
+	    {% endfor %}	
+	    </div>                                  
+        
+
+                                            <!-- /////aboutus/////-->
+                                            <!-- /////aboutus/////-->
+      <div class="container-fluid aboutus">
+      	<div class="row">
+      		<div class="col-lg-1 col-md-1 col-sm-0 col-11 d-block m-auto"></div>
+      		<div class="col-lg-3 col-md-5 col-sm-10 col-11 d-block m-auto">
+      			<h5>Calculators</h5>
+      			<ul>
+      				 {% for link in footer.Calculators %}
+			       		 <li><a href="{{link.url}}"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{link.title }}</a></li>
+			 
+			         {% endfor %}
+			    </ul>
+      		</div>
+      		<div class="col-lg-4 col-md-6 col-sm-10 col-11 d-block m-auto">
+      			<h5>Blogs</h5>
+      			<ul>
+      				{% for link in footer.Blogs %}
+			         <li><a href="{{link.url}}"><i class="fa fa-long-arrow-right" aria-hidden="true"></i>{{link.title }}</a></li>
+			        {% endfor %}
+			   </ul>
+      		</div>
+      		<div class="col-lg-2 col-md-4 col-sm-10 col-11 d-block m-auto">
+      			<h5>About Us</h5>
+      			<ul>
+                   <li><a href="/privacy_policy.html">Company Policy</a></li>
+                   <li><a href="https://www.facebook.com/Fintra-714955548629332" target="_blank">Facebook</a></li>
+                   <li><a href="https://www.linkedin.com/company/13457034" target="_blank">Linkedin</a></li>
+                   <li><a href="https://twitter.com/FintraSupport" target="_blank">Twitter</a></li>
+                   <li class="aboutlast"><a href="https://www.youtube.com/channel/UC13B009CymX4ClgOgXPuiYw" target="_blank">Youtube</a></li>
+                </ul>
+      		</div>
+      		<div class="col-lg-1 col-md-5 col-sm-10 col-11 d-block m-auto">
+      			<h5>Downloads</h5>
+      			<ul>
+                   <li class="downlast"><a href="https://play.google.com/store/apps/details?id=com.fintra.app&amp;referrer=utm_source%3Dsite%26utm_medium%3Dapplink" target="_blank">Fintra Android App<br><img alt="Fintra Android App" src="https://images.fintra.co.in/cms/googleplay-download-1.jpg" class="img-fluid"></a></li>
+                  </ul>
+      		</div>
+      		<div class="col-lg-1 col-md-0 col-sm-0 col-11 d-block m-auto"></div>
+      	</div>
+      </div>
+
+	   <footer>
+	   	<p>© 2020 Fintra</p>
+	   </footer>                              
+
+
+	   <script type="text/javascript">
+	   	 mybutton = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop >140 || document.documentElement.scrollTop >140) {
+        mybutton.style.display = "block";
+        } else {
+        mybutton.style.display = "none";
+         }
+        }
+
+       function topFunction() {
+       document.body.scrollTop = 0;
+       document.documentElement.scrollTop = 0;
+       }
+	   </script>                                                       
+</body>
+</html>

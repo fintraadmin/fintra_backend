@@ -1,0 +1,76 @@
+
+{% extends 'base.twig.html' %}
+	{% block cssblock %}
+		<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+	{% endblock %}
+
+
+	{% block contentblock %}
+
+	<div class="container-fluid page-name">
+	  	<div class="container">
+	  		<ul>
+				<li><a href="/{{language}}">Home<span>&nbsp;/</span></a></li>
+	  			<li><a href="#" style="color:white;">{{data.value.title}}</a></li>
+	  		</ul>
+	  	</div>
+	  </div>   
+
+
+	 <div class="container visit">
+		<center>
+        		<h1 class="text-capitalize">{{data.value.title}}</h1>
+		</center>
+	</div>
+
+	<div class="container visit">
+	  		<h2> Read more about {{data.value.title}} </h2>
+		<div class="d-flex flex-row flex-wrap">
+    			{% for topic in data.topics %}
+				<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+	   			<div class="card-body">
+	   					<h5 class="text-capitalize"> <a href="{{ topic.url }}"> {{ topic.title }} </a></h5><!-- ////about content//// -->
+	   					<p class="text-justify text-capitalize mt-3"></p><!-- ////some paragraph/// -->
+	   				</div>
+	   			</div>
+    			{% endfor %}
+	   		</div>	
+	  	</div>
+	  </div>                      
+
+	<div class="container visit">
+	  		<h2> {{data.value.title}} calculators</h2>
+		<div class="d-flex flex-row flex-wrap">
+    			{% for topic in data.calculators %}
+				<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+				<img src="{{topic.image}}" class="img-fluid">
+	   			<div class="card-body">
+	   					<h5 class="text-capitalize"> <a href="{{ topic.url }}">{{ topic.title }}</a> </h5><!-- ////about content//// -->
+
+	   			</div>
+	   			</div>
+    			{% endfor %}
+	   		</div>	
+	  	</div>
+	  </div>                      
+
+
+
+	 <div class="container visit">
+	  		<h3 class="text-capitalize">{{seo.subtitle}}</h3>
+	        <table class="table table-striped">
+            	<tbody>
+		{% for item in funds %}
+              	<tr>
+                
+                	<td></td><!-- /////serial no/// -->
+                	<td> <a  href="{{item.url}}">{{item.text}}</a> </td><!-- /////name//// -->
+              	</tr>
+    		{% endfor %}
+            	</tbody>
+       		</table>
+	  </div>                  
+
+	 {% endblock %}
+
+ 

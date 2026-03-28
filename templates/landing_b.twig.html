@@ -1,0 +1,270 @@
+{# templates/step3.twig #}
+{% extends 'baselayout.twig.html' %}
+
+{% block title %}Document Upload - Loan Application{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-2">Upload Documents</h1>
+    <p class="text-gray-600 mb-6">Please upload all required documents to process your application</p>
+    
+    <input type="hidden" name="lead_id" value="{{ lead_id }}">
+    
+    <div class="space-y-4">
+        <!-- PAN Card -->
+        <div class="border rounded-lg p-4" id="section_pan">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">PAN Card</h3>
+                    <p class="text-sm text-gray-500">JPG, PNG or PDF up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_pan" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_pan" class="hidden" accept=".jpg,.jpeg,.png,.pdf" 
+                           onchange="handleFileUpload('pan', this)">
+                    <label for="file_pan" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_pan" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aadhaar Card -->
+        <div class="border rounded-lg p-4" id="section_aadhaar">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">Aadhaar Card</h3>
+                    <p class="text-sm text-gray-500">JPG, PNG or PDF up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_aadhaar" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_aadhaar" class="hidden" accept=".jpg,.jpeg,.png,.pdf"
+                           onchange="handleFileUpload('aadhaar', this)">
+                    <label for="file_aadhaar" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_aadhaar" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salary Slips -->
+ 	{% if loan_type == "1" %}	
+        <div class="border rounded-lg p-4" id="section_salary">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">Last 3 Months Salary Slips</h3>
+                    <p class="text-sm text-gray-500">PDF or Excel up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_salary" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_salary" class="hidden" accept=".pdf,.xlsx,.xls"
+                           onchange="handleFileUpload('salary', this)">
+                    <label for="file_salary" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_salary" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+	{% endif %}
+        <!-- Bank Statements -->
+        <div class="border rounded-lg p-4" id="section_bank">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">6 Months Bank Statements</h3>
+                    <p class="text-sm text-gray-500">PDF , JPG or PNG up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_bank" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_bank" class="hidden" accept=".pdf,.jpg,.png"
+                           onchange="handleFileUpload('bank', this)">
+                    <label for="file_bank" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_bank" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+	 <!-- Ownership Address Proof -->
+        <div class="border rounded-lg p-4" id="section_address">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">Office Address Proof (Utility Bills, Tax Certificate etc)</h3>
+                    <p class="text-sm text-gray-500">JPG, PNG or PDF up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_address" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_address" class="hidden" accept=".jpg,.jpeg,.png,.pdf"
+                           onchange="handleFileUpload('waddress', this)">
+                    <label for="file_address" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_address" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+	 <!-- ITR -->
+        <div class="border rounded-lg p-4" id="section_address">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h3 class="font-medium">3 Year ITR Return</h3>
+                    <p class="text-sm text-gray-500">JPG, PNG or PDF up to 4MB</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="status_address" class="text-sm text-gray-500">Pending</span>
+                    <input type="file" id="file_address" class="hidden" accept=".jpg,.jpeg,.png,.pdf"
+                           onchange="handleFileUpload('witr', this)">
+                    <label for="file_address" 
+                           class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer text-sm">
+                        Upload
+                    </label>
+                </div>
+            </div>
+            <div id="progress_address" class="mt-2 hidden">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-500 h-2 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex justify-between items-center mt-8">
+            <button onclick="submitDocuments()" 
+                    id="submitButton"
+                    disabled
+                    class="bg-blue-500 text-white px-6 py-2 rounded opacity-50 cursor-not-allowed">
+                Complete Application
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const REQUIRED_DOCUMENTS = ['pan', 'aadhaar', 'waddress' , 'bank' , 'witr'];
+const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4MB in bytes
+const uploadedDocuments = new Set();
+
+function handleFileUpload(docType, input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    // Check file size
+    if (file.size > MAX_FILE_SIZE) {
+        alert('File size exceeds 4MB limit');
+        input.value = '';
+        return;
+    }
+
+    const progressContainer = document.getElementById(`progress_${docType}`);
+    const progressBar = progressContainer.querySelector('div > div');
+    const statusSpan = document.getElementById(`status_${docType}`);
+
+    // Show progress bar
+    progressContainer.classList.remove('hidden');
+    statusSpan.textContent = 'Uploading...';
+    statusSpan.className = 'text-sm text-blue-500';
+
+    const formData = new FormData();
+    formData.append('document', file);
+    formData.append('document_type', docType);
+    formData.append('lead_id', document.querySelector('[name="lead_id"]').value);
+
+    // Upload file
+    fetch('/api/loan/upload-document', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(result => {
+       if (result.success) {
+            progressBar.style.width = '100%';
+            statusSpan.textContent = ' Uploaded';
+            statusSpan.className = 'text-sm text-green-500';
+            uploadedDocuments.add(docType);
+        } else {
+            throw new Error(result.message || 'Upload failed');
+        }
+    })
+    .catch(error => {
+        statusSpan.textContent = 'Failed';
+        statusSpan.className = 'text-sm text-red-500';
+        progressContainer.classList.add('hidden');
+        console.error('Upload error:', error);
+    })
+    .finally(() => {
+        updateSubmitButton();
+    });
+}
+
+function updateSubmitButton() {
+    const allUploaded = REQUIRED_DOCUMENTS.every(doc => uploadedDocuments.has(doc));
+    const submitButton = document.getElementById('submitButton');
+    submitButton.disabled = !allUploaded;
+    submitButton.classList.toggle('opacity-50', !allUploaded);
+    submitButton.classList.toggle('cursor-not-allowed', !allUploaded);
+    
+    if (allUploaded) {
+        submitButton.classList.add('hover:bg-blue-600');
+    }
+}
+
+async function submitDocuments() {
+    if (uploadedDocuments.size !== REQUIRED_DOCUMENTS.length) {
+        alert('Please upload all required documents');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/loan/finalize-application', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                lead_id: document.querySelector('[name="lead_id"]').value
+            })
+        });
+
+        const result = await response.json();
+        //if (result.success) {
+        if (10>3) {
+            window.location.href = 'landing_loan/complete?step=4&lead_id='+document.querySelector('[name="lead_id"]').value;
+        } else {
+            throw new Error(result.message || 'Failed to complete application');
+        }
+    } catch (error) {
+        alert('Error completing application: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

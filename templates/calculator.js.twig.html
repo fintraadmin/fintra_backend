@@ -1,0 +1,117 @@
+
+		<script type="text/javascript">
+
+			$(document).ready(function() {
+ 
+			var isMobile = {
+				Android: function() {
+				return navigator.userAgent.match(/Android/i);
+				},
+				BlackBerry: function() {
+				return navigator.userAgent.match(/BlackBerry/i);
+				},
+				iOS: function() {
+				return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+				},
+				Opera: function() {
+				return navigator.userAgent.match(/Opera Mini/i);
+				},
+				Windows: function() {
+				return navigator.userAgent.match(/IEMobile/i);
+				},
+				any: function() {
+				return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+				}
+				};
+
+				if(!isMobile.any()){
+					$('#btnWhatsapp').hide();
+				}
+
+				$(document).on("click", '.btnWhatsapp', function() {
+				if( isMobile.any() ) {
+				 
+				var text = $('#output').html();
+				var url = window.location.href;
+				text = text.replace(/<p>/g , '');
+				text = text.replace(/<b>/g , '*');
+				text = text.replace(/<strong>/g , '*');
+    				text = text.replace(/<\/b>/g , '*');
+    				text = text.replace(/<\/strong>/g , '*');
+    				text = text.replace(/<\/p>/g , '');
+    				text = text.replace(/<br>/g , '\n');
+				var message = encodeURIComponent(text + '\n' +  '\n\n*Powered By:Fintra*\n' ) + encodeURIComponent(url);
+				var whatsapp_url = "whatsapp://send?text=" + message;
+				window.location.href = whatsapp_url;
+				} else {
+				alert("This option is only available on mobile devices.");
+				}
+				 
+				});
+
+				var clipboard = new ClipboardJS('.btnShare');
+
+
+
+			});
+
+
+
+			function objectifyForm(formArray) {
+ 			   	//serialize data function
+    				var returnArray = {};
+    				for (var i = 0; i < formArray.length; i++){
+        				returnArray[formArray[i]['name']] = formArray[i]['value'];
+    				}
+    				return returnArray;
+			}
+
+			function addrows(jsonObject){
+				var markup = '';
+				var style = '';
+				
+   					 	$.each(jsonObject, function(key,val){
+        						console.log("key : "+key+" ; value : "+val);
+							var th = '<th>' + key + '</th>';
+							var td = '<td>' + val + '</td>';
+							var tr = '<tr>' + th + td + '</tr>';
+							markup += tr;
+    						});
+
+				$("table tbody").append(markup);
+
+			}
+
+
+      			$(document).ready(function() {
+         			$("#sub").unbind('click').bind('click', function (e) {
+					console.log('click'); 
+         				var queryString =objectifyForm ($('#myForm').serializeArray());
+					var input  = {};
+					input['input'] = queryString;
+					input['id'] = queryString['id'];
+					input['language'] = queryString['language'];
+					input =  JSON.stringify(input);
+					console.log(input);    
+
+
+					$.ajax({
+           					type: "POST",
+           					url: 'https://fintra.co.in/api/v2/calculator',
+           					data: input, // serializes the form's elements.
+           					success: function(data)
+           					{
+               						var result = JSON.parse(data); // show response from the php script.
+							var output = result['data'];
+							var values = result['values'];
+							console.log(output);
+							console.log(values);
+							$('#output').html(output);
+							$('#outputcard').show();
+							addrows(values);
+           					}
+         				});  
+					return false;
+         			});
+      			});
+   		</script>

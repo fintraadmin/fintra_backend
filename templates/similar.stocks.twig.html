@@ -1,0 +1,44 @@
+
+{% set title = 'Similar Stocks' %}
+{% if id == 'nifty50High' %}
+	{% set title = 'NIFTY top gainers stocks' %}
+{% elseif id == 'nifty50Low'%}
+	{% set title = 'NIFTY top loosers stocks' %}
+{% elseif type == 'high' %}
+	{% set title = 'Top gainers similar stocks' %}
+{% elseif type == 'low' %}
+	{% set title = 'Top loosers similar stocks' %}
+{% else %}
+	{% set title = 'Recommended' %}
+{% endif %}
+
+<div class="container visit">
+	  	<h3>{{title}}</h3><!-- /////place some heading//// -->
+ 		<div class="d-flex flex-row flex-wrap">
+		{% for row in similar %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+ 				<div class="card-body">
+ 				           <h6> <a href="{{row.url}}">{{row.company_title}}</a></h6><!-- ////place title/// -->
+					   <p > &#8377; {{row.ltp}} </p>
+					   <p >OPEN: <strong>&#8377;{{row.open_price}}</strong> , DAY HIGH: <strong>&#8377;{{row.intradayHigh}}</strong> , DAY LOW: <strong>&#8377;{{row.intradayLow}} </strong> </p>
+ 				</div>
+ 			</div>
+		{% endfor %}
+ 		</div>
+ </div>	 
+
+<div class="container visit">
+                <h3>Compare  {{company_title}} with similar stocks </h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+                {% for item in compare %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <div class="card-body">
+                                        <h6> <a href="{{item.compare_url}}">  {{item.company_name}} </a></h6>
+                                        <h6> Volume: {{item.volume}} </h6>
+                                        <h6> Last Price Change:  {{item.pChange}}%</h6>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+ </div>
+ 

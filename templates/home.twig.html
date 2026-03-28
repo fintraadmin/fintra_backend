@@ -1,0 +1,90 @@
+
+{% extends 'base.twig.html' %}
+	{% block metablock %}
+		<link rel="canonical" href="https://fintra.co.in/{{language}}" />
+	{% endblock %}
+
+	{% block cssblock %}
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+	{% endblock %}
+
+	{% block contentblock %}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	 <div class="container visit">
+	   		<h1 class="text-center">{{seo.h1}}</h1>
+		<center>
+	   		<p class="text-center">{{seo.data}}</p>
+		</center>
+	</div>
+
+	<div class="container visit">
+                <div class="d-flex flex-row flex-wrap">
+                {% for category in categories %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                           <img data-src="{{category.image}}" alt="{{category.title}}" class="img-fluid lazyload"><!-- ////place any image/// -->
+                                <div class="card-body">
+                                        <h4><a href="{{category.url}}">{{category.title}}</a></h4>
+                                        <p class="card-text">{{category.description | raw}}</p>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+        </div>
+
+
+	   <div class="container-fluid fintra-advantage">
+	   		<h2 class="text-center">{{configs.home_h2_1}}</h2>
+	   		<p class="text-center">{{configs.home_h2_1_desc}}</p>
+           </div>	
+
+        <div class="container texticon">
+        	<div class="row">
+        		<div class="col-lg-1 col-md-1 col-sm-0 col-11 d-block m-auto"></div>
+        		<div class="col-lg-5 col-md-5 col-sm-6 col-11 d-block m-auto">
+        			<h4><i class="fa fa-star-o mr-2" aria-hidden="true"></i> {{configs.home_feature_1_title}} </h4>
+        			<p class="ml-5">{{configs.home_feature_1_desc}}</p>
+        		</div>
+        		<div class="col-lg-5 col-md-5 col-sm-6 col-11 d-block m-auto">
+        			<h4> <i class="fa fa-pencil mr-2" aria-hidden="true"></i>  {{configs.home_feature_2_title}}</h4>
+        			<p class="ml-5">{{configs.home_feature_2_desc}}</p>
+        		</div>
+        		<div class="col-lg-1 col-md-1 col-sm-0 col-11 d-block m-auto"></div>
+        	</div>
+
+        	<div class="row">
+        		<div class="col-lg-1 col-md-1 col-sm-0 col-11 d-block m-auto"></div>
+        		<div class="col-lg-5 col-md-5 col-sm-6 col-11 d-block m-auto">
+        			<h4><i class="fa fa-mobile mr-2 ml-2" aria-hidden="true"></i> {{configs.home_feature_3_title}}</h4>
+        			<p class="ml-5">{{configs.home_feature_3_desc}}</p>
+        		</div>
+        		<div class="col-lg-5 col-md-5 col-sm-6 col-11 d-block m-auto pt-lg-4">
+        			<h4><i class="fa fa-refresh mr-2" aria-hidden="true"></i> {{configs.home_feature_4_title}}</h4>
+        			<p class="ml-5">{{configs.home_feature_4_desc}}</p>
+        		</div>
+        		<div class="col-lg-1 col-md-1 col-sm-0 col-11 d-block m-auto"></div>
+        	</div>
+        </div>
+
+
+
+	<div class="container visit">
+	  	<center>
+	  		<h2>{{configs.home_h2_2}}</h2><!-- /////place some heading//// -->
+	  		<p id="headtitle"> {{configs.home_h2_2_desc}} </p><!-- ////place some paragragh//// -->
+	  	</center>
+ 		<div class="d-flex flex-row flex-wrap">
+	   	{% for blog in blogs %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+ 			   <img data-src="{{blog.featured_image}}" alt="{{blog.title}}" class="img-fluid lazyload"><!-- ////place any image/// -->
+ 				<div class="card-body">
+					<h4><a href="{{blog.perma_link}}">{{blog.title}}</a></h4>
+ 				</div>
+ 			</div>
+	   	{% endfor %}
+ 		</div>
+ 	</div>	   
+	{% endblock %}

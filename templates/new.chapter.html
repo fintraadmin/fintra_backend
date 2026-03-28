@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>{{title}}</title>
+        <meta name="description" content="{{description}}">
+	<meta name="keywords" content="{{keywords}}">
+        <meta property="og:image" content="{{shareImg}}">
+        <meta property="og:title" content="{{title}}">
+        <meta property="og:description" content="{{description}}">
+ 	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@fintrasupport" />
+	<meta name="twitter:title" content="{{title}}" />
+	<meta name="twitter:description" content="{{description}}" />
+	<meta name="twitter:image" content="{{shareImg}}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link async  href="https://cdn.fintra.co.in/css/flexslider.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/line-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/elegant-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/theme-1.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  href="https://cdn.fintra.co.in/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+        <link async  async href="https://cdn.fintra.co.in/css/fonts.1.min.css" rel="stylesheet" type="text/css" media="all"/>
+        <!--[if gte IE 9]>
+                <link rel="stylesheet" type="text/css" href="css/ie9.css" />
+                <![endif]-->
+        <script async src="https://cdn.fintra.co.in/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-105771479-2"></script>
+	<script>
+ 		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-105771479-2');
+	</script>
+	<link rel="alternate" href="{{android_app_link}}">
+
+    </head>
+
+    <body>
+<!--
+<div class="loader">
+	<div class="spinner">
+		  <div class="double-bounce1"></div>
+		  <div class="double-bounce2"></div>
+		</div>
+</div>
+-->
+<div class="nav-container">
+ <nav class="centered-logo top-bar">
+    <div class="container">
+    	<div class="row">
+    		<div class="col-sm-12 text-center">
+    			<a href="/" title="Fintra logo">
+    			<img class="logo logo-dark" alt="Fintra logo" src="https://cdn.fintra.co.in/img/logo_web.png">
+			</a>
+    		</div>
+    	</div>
+    
+    	<div class="row nav-menu">
+    		<div class="col-sm-12 columns text-center">
+    			<ul class="menu">
+				<a></a>
+    				{% for item in navigation %}
+    				 <li><a href="{{ item.href }}" target="_self">{{ item.caption }}</a></li>
+    				{% endfor %}
+    			</ul>
+    		</div>
+    	</div>
+    	
+    	<div class="mobile-toggle">
+    		<i class="icon icon_menu"></i>
+    	</div>
+    	
+    </div>
+    <div class="bottom-border"></div>
+ </nav>
+</div>		
+
+		<div class="main-container">
+		<section class="blog-list-3 bg-white">
+			
+				<div class="blog-snippet-3">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+							<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">
+  								<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{home_href}}" itemprop="url"><span itemprop="title">{{home}}</span></a></li>
+  								<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{level1href}}" itemprop="url"><span itemprop="title">{{level1}}</span></a></li>
+								<li>{{title}}</li>
+							</ul>
+								<h1>{{title}}</h1>
+								<p class="lead">
+								{{details | raw}}
+								</p>
+								{% if prev %}
+								<div style="float: left;"><a href="{{prev}}" class="previous">&laquo;{{prev_title}}</a></div>
+								{% endif %}
+								{% if next %}
+								<div style="float: right;"><a href="{{next}}" class="next">{{next_title}}&raquo;</a></div>
+								{% endif %}
+								<br>
+								<h2> {{msg}} </h2>
+								<a class="store-link" href="{{applink}}" target="_blank"><img alt="Download Fintra app from Play Store" src="https://cdn.fintra.co.in/img/google-play.png"></a>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</section>
+		</div>
+
+<div class="footer-container">
+			<footer class="social bg-secondary-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 text-center">
+							<h1 class="text-white">Feel free to contact us</h1>
+							<a href="mailto:fintra.co.in@gmail.com" class="text-white"><strong>fintra.co.in@gmail.com</strong></a><br>
+							<ul class="social-icons">
+								<li>
+									<a href="https://twitter.com/FintraSupport">
+										<i class="icon social_twitter"></i>
+									</a>
+								</li>
+								
+								<li>
+									<a href="https://www.facebook.com/Fintra-714955548629332">
+										<i class="icon social_facebook"></i>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/company/13457034">
+										<i class="icon social_linkedin"></i>
+									</a>
+								</li>
+							</ul><br>
+							<span class="sub">© Copright 2017 Fintra Financial Services. All Rights Reserved. </span>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	<script src="https://cdn.fintra.co.in/js/jquery.min.js"></script>
+        <script src="https://cdn.fintra.co.in/js/jquery.plugin.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/bootstrap.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/jquery.flexslider-min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/smooth-scroll.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/skrollr.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/spectragram.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/scrollReveal.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/isotope.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/twitterFetcher_v10_min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/lightbox.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/jquery.countdown.min.js"></script>
+        <script async src="https://cdn.fintra.co.in/js/scripts.min.js"></script>
+    </body>
+</html>

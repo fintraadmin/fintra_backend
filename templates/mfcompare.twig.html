@@ -1,0 +1,195 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="https://cdn.fintra.co.in/css/credit.css">
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+{% endblock %}
+
+{% block navblock %}
+ {% if language == 'hindi' %}
+  <li class="nav-item" ><a  class="nav-link" href="/english/credit-cards-compare/{{ids}}">Compare</a></li>
+ {% endif %}
+ {% if language == 'english' %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi/credit-cards-compare/{{ids}}">Compare (Hindi)</a></li>
+ {% endif %}
+{% endblock %}
+
+{% block contentblock %}
+
+	<div class="container-fluid page-name">
+		<br>
+		<br>
+		<br>
+                <div class="container">
+                        <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/mutual-funds"><span property="name">Mutual Funds</span></a> <meta property="position" content="1"> </li>
+       				 <li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/mutual-fund/{{card1.id}}"><span property="name">{{card1.name}}</span></a> <meta property="position" content="2"></li>
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><span property="name">Compare {{card2.name}}</span><meta property="position" content="3"></li>
+                        </ul>
+                </div>
+          </div>
+
+<div class="container mb-2 credit_card ">
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.name}} <span>vs</span> {{card2.name}}</h1>
+    <div class="row">
+	<div class="col-6 d-block mr-0">
+		<div class=" card">
+                    <div class="card-body">
+			<center>
+                		<a href="/{{language}}/mutual-fund/{{card1.id}}"><p class="title">{{card1.name}}</p></a>
+			</center>
+            		</div>
+            	</div>
+        </div>
+	 <div class="col-6 d-block second_card ml-0">
+                <div class=" card">
+                    <div class="card-body">
+			<center>
+            			<a href="/{{language}}/mutual-fund/{{card2.id}}"><p class="title">{{card2.name}}</p></a>
+			</center>
+		   </div>
+        	</div>
+    	</div>
+    </div>
+
+	<center>
+            <p class="comparison_head">AUM (in crores) </p>
+        </center>
+	<div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                	<p>&#8377;{{card1.aum}}</p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>&#8377;{{card2.aum}}</p>
+		</center>
+            </div>
+        </div>
+
+	 <center>
+            <p class="comparison_head">Editor's Rating</p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+                <p>{{card1.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+	    <div class="col-6 d-block">
+                <center>
+                <p>{{card2.rating}} <i class="fa fa-star text-success" aria-hidden="true"></i> </p>
+		</center>
+            </div>
+    </div>
+
+	{% if card1.sip1yr is defined and card2.sip1yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;10,000 SIP in 1 year </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.sip1yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.sip1yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+
+	{% if card1.sip2yr is defined and card2.sip2yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;10,000 SIP in 2 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.sip2yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+		&#8377;{{card2.sip2yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.sip5yr is defined and card2.sip5yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;10,000 SIP in 5 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.sip5yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.sip5yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.lump1yr is defined and card2.lump1yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 1 year </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump1yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump1yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.lump2yr is defined and card2.lump2yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 2 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump2yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump2yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% if card1.lump5yr is defined and card2.lump5yr is defined %}
+	<center>
+            <p class="comparison_head">&#8377;1,00,000 lumpsum in 5 years </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+		&#8377;{{card1.lump5yr}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+		&#8377;{{card2.lump5yr}}
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+</div>
+    <hr>
+	
+	{% embed "similar.mfs.twig.html" %}
+	{% endembed %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1f314d17.css",
+    "main.js": "/static/js/main.091619a4.js",
+    "static/media/image 125.svg": "/static/media/image 125.9f7ef1608fdf443a77b135cef4d4f000.svg",
+    "static/media/facebook.png": "/static/media/facebook.f25335b463a12545be9b.png",
+    "static/media/Visa.png": "/static/media/Visa.6db3760f93ced36363a3.png",
+    "static/media/image_1.svg": "/static/media/image_1.f7174d606334a5caac1825173c1d0206.svg",
+    "static/media/appstore.svg": "/static/media/appstore.c192f2fdf7eaf0429cb6b8e9565177a2.svg",
+    "static/media/gplay.svg": "/static/media/gplay.11ee92b920fa28fae8596587d80245f7.svg",
+    "static/media/insta.svg": "/static/media/insta.d1625913cc914380a42dfcc16392815e.svg",
+    "static/media/image 57.svg": "/static/media/image 57.7c26732d647e76a2fd589d079039858a.svg",
+    "static/media/image 154.svg": "/static/media/image 154.f89ddc886688e4bfb3ec9b201dea5429.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.0fe8f6d439b15fe10126ea3c2078df60.svg",
+    "static/media/messenger.svg": "/static/media/messenger.a3500e41f20db3731869bc2c8b238074.svg",
+    "static/media/twitter.svg": "/static/media/twitter.3005fdc2d92ff6d2cde137d96612d9a7.svg",
+    "index.html": "/index.html",
+    "static/media/youtube.svg": "/static/media/youtube.22dd971e6742680fd10ce3f1fd15f132.svg",
+    "static/media/Vector.svg": "/static/media/Vector.137ebea0b7f08db333239c7151577701.svg",
+    "static/media/ic_baseline-copyright.svg": "/static/media/ic_baseline-copyright.efd3e9b03ca57be874d491eb9bf46b0c.svg",
+    "static/media/heart.svg": "/static/media/heart.77b70d7226b7c58f17de44a1f7a17198.svg",
+    "static/media/Vector1.svg": "/static/media/Vector1.e5c964d1732fdb7c07b00950c4b5fb99.svg",
+    "static/media/cancel.svg": "/static/media/cancel.88eaf6bb59a163ac8d14ff30a14f80b2.svg",
+    "static/media/cross_mark.svg": "/static/media/cross_mark.aaf8ed9a2cb76dfa2eb1ae310fa2ffbc.svg",
+    "static/media/VectorCheck.svg": "/static/media/VectorCheck.5de734fceae17806768f339b2affaf73.svg",
+    "static/media/tick_mark.svg": "/static/media/tick_mark.e7305f92769a516f3785793f53dad241.svg",
+    "main.1f314d17.css.map": "/static/css/main.1f314d17.css.map",
+    "main.091619a4.js.map": "/static/js/main.091619a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f314d17.css",
+    "static/js/main.091619a4.js"
+  ]
+}

@@ -1,0 +1,41 @@
+
+<div class="container visit">
+	  	<h3>{{heading1}}</h3><!-- /////place some heading//// -->
+ 		<div class="d-flex flex-row flex-wrap">
+		{% for item in similar %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+				<img data-src="{{item.image}}" class="img-fluid lazyload" alt="{{item.title}}">
+ 				<div class="card-body">
+					<h6> <a href="{{item.url}}">  {{item.title}} </a></h6>
+ 				</div>
+ 			</div>
+		{% endfor %}
+ 		</div>
+ </div>	 
+
+<div class="container visit">
+                <h3>{{heading2}}</h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+                {% for item in similar1 %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <img data-src="{{item.image}}" class="img-fluid lazyload" alt="{{item.title}}">
+                                <div class="card-body">
+                                        <h6> <a href="{{item.compare_url}}">  {{item.title}} </a></h6>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+ </div> 
+<div class="container visit">
+                <h3>{{heading3}}</h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+                {% for item in similar2 %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <img data-src="{{item.image}}" class="img-fluid lazyload" alt="{{item.title}}">
+                                <div class="card-body">
+                                        <h6> <a href="{{item.compare_url}}">  {{item.title}} </a></h6>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+ </div> 

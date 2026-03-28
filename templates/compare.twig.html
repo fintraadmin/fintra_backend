@@ -1,0 +1,72 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="https://cdn.fintra.co.in/css/credit.css">
+    		<script async src="https://cdn.fintra.co.in/js/lazyload.min.js"></script>
+{% endblock %}
+
+
+{% block contentblock %}
+	<div class="container-fluid page-name">
+		<br>
+		<br>
+		<br>
+<!--
+                <div class="container">
+                        <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/Stock/mutual-funds"><span property="name">Mutual Funds</span></a> <meta property="position" content="1"> </li>
+       				 <li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><a property="item" typeof="WebPage" href="/{{language}}/mutual-fund/{{card1.id}}"><span property="name">{{card1.name}}</span></a> <meta property="position" content="2"></li>
+        			<li  property="itemListElement" typeof="ListItem" class="breadcrumb-item"><span property="name">Compare {{card2.name}}</span><meta property="position" content="3"></li>
+                        </ul>
+                </div>
+-->
+          </div>
+<div class="container mb-2 credit_card ">
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{seo.h1}}</h1>
+    <div class="row">
+	<div class="col-6 d-block mr-0">
+		<div class=" card">
+                    <div class="card-body">
+			<center>
+                		<a href="#"><p class="title">{{item1.title}}</p></a>
+			</center>
+            		</div>
+            	</div>
+        </div>
+	 <div class="col-6 d-block second_card ml-0">
+                <div class=" card">
+                    <div class="card-body">
+			<center>
+            			<a href="#"><p class="title">{{item2.title}}</p></a>
+			</center>
+		   </div>
+        	</div>
+    	</div>
+    </div>
+	{% for field in fields %}
+	{% if field.heading is not empty %}
+	<center>
+            <p class="comparison_head"> {{field.heading}} </p>
+        </center>
+        <div class="row">
+            <div class="col-6 d-block" style="border-right: 1px solid black;">
+                <center>
+			{{field.field1 |raw}}
+		</center>
+            </div>
+	   <div class="col-6 d-block">
+                <center>
+			{{field.field2 | raw}}
+		</center>
+		</center>
+            </div>
+        </div>
+   	{% endif %}
+	{% endfor %}
+</div>
+    <hr>
+	
+	{% embed "similar.compare.twig.html" %}
+	{% endembed %}
+{% endblock %}

@@ -1,0 +1,11 @@
+[
+{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.fintra.app",
+    "sha256_cert_fingerprints":
+    ["1D:B4:C4:B1:B1:48:29:C5:27:05:AA:9A:3C:DA:6C:17:56:D2:D4:67:DB:F8:9B:26:11:BF:AB:9E:83:9F:7E:7E"]
+  }
+}
+]

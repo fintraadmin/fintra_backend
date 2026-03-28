@@ -1,0 +1,105 @@
+
+{% extends 'base.twig.html' %}
+
+{% block cssblock %}
+<link rel="stylesheet" href="https://images.fintra.co.in/dynamic2.css">
+{% endblock %}
+
+{% block navblock %}
+ {% if language == 'hindi' %}
+  <li class="nav-item" ><a  class="nav-link" href="/english/credit-cards-compare/{{ids}}">Compare</a></li>
+ {% endif %}
+ {% if language == 'english' %}
+  <li class="nav-item" ><a  class="nav-link" href="/hindi/credit-cards-compare/{{ids}}">Compare (Hindi)</a></li>
+ {% endif %}
+{% endblock %}
+
+{% block contentblock %}
+
+	<div class="container-fluid page-name">
+                <div class="container">
+                        <ul>
+        			<li class="breadcrumb-item"><a href="/{{language}}/credit-cards"><span>Credit-Cards</span></a></li>
+       				 <li class="breadcrumb-item"><a href="/{{language}}/credit-cards-category/{{card1.bank.url}}"><span>{{card1.bank.title}}</span></a></li>
+        			<li class="breadcrumb-item"><a href="{{card1.url}}"><span>{{card1.title}}</span></a></li>
+        			<li class="breadcrumb-item"><span>Compare {{card2.title}}</span></li>
+                        </ul>
+                </div>
+          </div>
+
+    <h1 style="font-size: 1.5rem;padding-bottom: 10px;padding-left: 10px;">{{card1.title}} vs {{card2.title}}</h1>
+    <div class="row">
+        <div class="col" style="text-align: center;">
+            <div style="align-items: center;"><a href="{{card1.url}}"><img src="{{card1.image}}" style="width:100px;height:60px;" alt="{{card1.title}}">
+                <p class="title">{{card1.title}}</p></a>
+            </div>
+        </div>
+        <div class="col col2" style="text-align: center;"><a href="{{card2.url}}"><img src="{{card2.image}}" style="width:100px;height:60px;" alt="{{card2.title}}">
+            <p class="title">{{card2.title}}</p></a>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;vertical-align: middle;">
+                <p class="attribute">Joining Fees</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;">
+            <div class="col" style="">
+                <p>&#8377;{{card1.joining_fees_format}}</p>
+            </div>
+            <div class="col col2" style="/*border-left: 5px solid red;*/">
+                <p>&#8377;{{card2.joining_fees_format}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="text-align: center;">
+                <p class="attribute">Editor's Rating</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:center;">
+            <div class="col col2">
+                <p>{{card1.rating}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.rating}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Key Features</p>
+            </div>
+        </div>
+        <div class="row" style="text-align:left;margin-left:10px;">
+            <div class="col col2">
+                <p>{{card1.features | raw }}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.features | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="compare-box">
+        <div class="row">
+            <div class="col" style="/*align-items: center;*/text-align: center;">
+                <p class="attribute">Editor's Review</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: left; margin-left:10px;">
+            <div class="col col2">
+                <p>{{card1.review | raw}}</p>
+            </div>
+            <div class="col col2">
+                <p>{{card2.review | raw}}</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+	
+	{% embed "similar.cc.twig.html" %}
+	{% endembed %}
+{% endblock %}

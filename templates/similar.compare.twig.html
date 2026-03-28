@@ -1,0 +1,28 @@
+
+<div class="container visit">
+	  	<h3>{{heading1}}</h3><!-- /////place some heading//// -->
+ 		<div class="d-flex flex-row flex-wrap">
+		{% set item1=similar1['item1'] %}
+		{% for item in similar1.items %}
+ 			<div class="card card-block col-lg-4 col-md-6 col-sm-12">
+ 				<div class="card-body">
+					<h6> <a href="/{{language}}{{item.url}}">  {{item1.title}} vs {{item.item.title}} </a></h6>
+ 				</div>
+ 			</div>
+		{% endfor %}
+ 		</div>
+ </div>	 
+
+<div class="container visit">
+                <h3>{{heading2}}</h3><!-- /////place some heading//// -->
+                <div class="d-flex flex-row flex-wrap">
+		{% set item1=similar2['item1'] %}
+                {% for item in similar2.items %}
+                        <div class="card card-block col-lg-4 col-md-6 col-sm-12">
+                                <div class="card-body">
+					<h6> <a href="/{{language}}{{item.url}}">  {{item1.title}} vs {{item.item.title}} </a></h6>
+                                </div>
+                        </div>
+                {% endfor %}
+                </div>
+ </div> 

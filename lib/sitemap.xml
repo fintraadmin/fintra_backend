@@ -1,0 +1,72 @@
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"> 
+<url>
+<loc>https://fintra.co.in/english<\loc>
+	<xhtml:link rel="alternate" hreflang="en"
+	href="https://fintra.co.in/english"/>
+	<xhtml:link rel="alternate" hreflang="hi"
+	href="https://fintra.co.in/hindi"/>
+</url>
+<url>
+<loc>https://fintra.co.in/hindi<\loc>
+	<xhtml:link rel="alternate" hreflang="en"
+	href="https://fintra.co.in/english"/>
+	<xhtml:link rel="alternate" hreflang="hi"
+	href="https://fintra.co.in/hindi"/>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/why-investing-is-important</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/time-is-money</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/why-invest-into-mutual-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/mutual-funds-vs-fixed-deposits</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/small-is-big</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/what-is-a-mutual-fund</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/mutual-funds-key-concepts</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/open-vs-closed-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/equity-mutual-fund</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/debt-balanced-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/tax-saving-mutual-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/mutual-fund-vs-ulip</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/investing-with-a-goal</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/return-vs-risk-in-mutual-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/how-to-select-the-best-mutual-fund</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/comparison-of-returns</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/sip-mutual-funds</loc>
+</url>
+<url>
+<loc>https://fintra.co.in/english/mutual-funds/how-to-invest-into-mutual-funds-kyc</loc>
+</url>
+</urlset>
