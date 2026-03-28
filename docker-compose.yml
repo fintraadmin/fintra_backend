@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.1-apache
+    container_name: fintra_backend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/apache.conf:/etc/apache2/sites-enabled/000-default.conf
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_BUCKET=${AWS_BUCKET}
+      - AWS_REGION=${AWS_REGION}
+    depends_on:
+      - db
+    networks:
+      - fintra_network
+
+  db:
+    image: mysql:8.0
+    container_name: fintra_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fintracms
+      MYSQL_USER: fintra_user
+      MYSQL_PASSWORD: fintra_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./fintracms.sql:/docker-entrypoint-initdb.d/fintracms.sql
+    networks:
+      - fintra_network
+
+volumes:
+  db_data:
+
+networks:
+  fintra_network:
+    driver: bridge
