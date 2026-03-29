@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" style="--c1:{{ brand.brand_color }};--c2:{{ brand.brand_color2 }};">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PKPB77V');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ brand.brand_name }} – Credit Cards</title>
+    {% if brand.favicon_url %}<link rel="icon" href="{{ brand.favicon_url }}">{% endif %}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/assets/css/cc-landing.css">
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKPB77V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+{# ════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════ #}
+<header class="lp-header">
+    <nav class="lp-nav">
+        <a class="lp-logo" href="#">
+            <div class="lp-logomark">
+                {% if brand.logo_url %}
+                    <img src="{{ brand.logo_url }}" alt="{{ brand.brand_name }} logo">
+                {% else %}
+                    {{ brand.brand_short }}
+                {% endif %}
+            </div>
+            <span class="lp-logotext">
+                {{- brand.brand_name|slice(0, brand.brand_name|length - 3) -}}
+                <span>{{ brand.brand_name|slice(-3) }}</span>
+            </span>
+        </a>
+        <a class="lp-track-btn" href="{{ tracking_url }}" target="_blank" rel="noopener">
+            Track Application
+        </a>
+    </nav>
+</header>
+
+{# ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ #}
+<section class="lp-hero">
+    <div class="lp-hero-inner">
+        <div class="lp-hero-badge">Compare &amp; Apply</div>
+
+        {# Split tagline: first 3 words plain, remainder in accent colour #}
+        {% set words = brand.tagline|split(' ') %}
+        <h1>
+            {{ words|slice(0, 3)|join(' ') }}
+            <em>{{ words|slice(3)|join(' ') }}</em>
+        </h1>
+
+        <p class="lp-hero-sub">{{ brand.sub_tagline }}</p>
+
+        <div class="lp-hero-stats">
+            {% for stat in brand.stats %}
+            <div class="lp-stat">
+                <div class="lp-stat-num">{{ stat.num }}</div>
+                <div class="lp-stat-lbl">{{ stat.lbl }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# ════════════════════════════════════════════
+   CATEGORY TABS
+════════════════════════════════════════════ #}
+<div class="lp-tabs-wrap">
+    <div class="lp-tabs" id="lpTabs" role="tablist">
+        <button class="lp-tab-btn active" data-cat="popular" role="tab" aria-selected="true" aria-controls="panel-popular">
+            <span class="tab-dot dot-popular"></span>
+            Popular
+            <span class="tab-count">{{ popular|length }}</span>
+        </button>
+        <button class="lp-tab-btn" data-cat="premium" role="tab" aria-selected="false" aria-controls="panel-premium">
+            <span class="tab-dot dot-premium"></span>
+            Premium
+            <span class="tab-count">{{ premium|length }}</span>
+        </button>
+        <button class="lp-tab-btn" data-cat="trending" role="tab" aria-selected="false" aria-controls="panel-trending">
+            <span class="tab-dot dot-trending"></span>
+            Trending
+            <span class="tab-count">{{ trending|length }}</span>
+        </button>
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   MACRO: renders a grid of cards
+   Usage: {{ cardGrid(cards, 'popular', 'ribbon-popular') }}
+════════════════════════════════════════════ #}
+{% macro cardGrid(cards, cat, ribbonClass, ribbonLabel, emptyIcon, emptyMsg) %}
+<div class="lp-cards-grid" role="list">
+    {% if cards|length > 0 %}
+        {% for card in cards %}
+        <article class="lp-card" role="listitem">
+            <span class="lp-card-ribbon {{ ribbonClass }}">{{ ribbonLabel }}</span>
+
+            <div class="lp-card-top">
+                <div class="lp-card-img-wrap">
+                    <img
+                        src="{{ card.image }}"
+                        alt="{{ card.title }}"
+                        loading="lazy"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="lp-card-img-fallback" aria-hidden="true">
+                        {{ card.title|slice(0,4)|upper }}
+                    </div>
+                </div>
+                <div class="lp-card-title-block">
+                    <div class="lp-card-name">{{ card.title }}</div>
+                    <div class="lp-card-bank">{{ ribbonLabel }} Card</div>
+                </div>
+            </div>
+
+            <div class="lp-card-body">
+                <div class="lp-fee-row">
+                    <span class="lp-fee-label">Joining Fee</span>
+                    <span class="lp-fee-value{% if card.joining_fees == 0 or card.joining_fees == '0' %} free{% endif %}">
+                        {%- if card.joining_fees == 0 or card.joining_fees == '0' -%}
+                            FREE
+                        {%- else -%}
+                            ₹{{ card.joining_fees }}
+                        {%- endif -%}
+                    </span>
+                </div>
+
+                <div class="lp-features" id="feat-{{ card.id }}-{{ cat }}">
+                    <ul>{{ card.features_findipay|raw }}</ul>
+                </div>
+
+                <div class="lp-card-actions">
+                    <button
+                        class="lp-btn-details"
+                        data-target="feat-{{ card.id }}-{{ cat }}"
+                        aria-expanded="false"
+                    >View Details</button>
+                    <button
+                        class="lp-btn-apply"
+                        onclick="window.location.href='{{ card.a_link }}'"
+                        aria-label="Apply for {{ card.title }}"
+                    >Apply Now →</button>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="lp-empty" role="status">
+            <span class="lp-empty-icon" aria-hidden="true">{{ emptyIcon }}</span>
+            {{ emptyMsg }}
+        </div>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% import _self as m %}
+
+{# ════════════════════════════════════════════
+   POPULAR PANEL
+════════════════════════════════════════════ #}
+<div class="lp-cat-panel active" id="panel-popular" role="tabpanel" aria-labelledby="">
+    <div class="lp-section">
+        <div class="lp-section-header">
+            <div class="lp-section-icon icon-bg-popular" aria-hidden="true">⭐</div>
+            <h2 class="lp-section-title">Popular Cards</h2>
+            <span class="lp-section-sub">Most applied this month</span>
+        </div>
+        {{ m.cardGrid(popular, 'popular', 'ribbon-popular', 'Popular', '📭', 'No popular cards available right now.') }}
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   PREMIUM PANEL
+════════════════════════════════════════════ #}
+<div class="lp-cat-panel" id="panel-premium" role="tabpanel">
+    <div class="lp-section">
+        <div class="lp-section-header">
+            <div class="lp-section-icon icon-bg-premium" aria-hidden="true">💎</div>
+            <h2 class="lp-section-title">Premium Cards</h2>
+            <span class="lp-section-sub">Exclusive privileges &amp; rewards</span>
+        </div>
+        {{ m.cardGrid(premium, 'premium', 'ribbon-premium', 'Premium', '💎', 'Premium cards coming soon.') }}
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   TRENDING PANEL
+════════════════════════════════════════════ #}
+<div class="lp-cat-panel" id="panel-trending" role="tabpanel">
+    <div class="lp-section">
+        <div class="lp-section-header">
+            <div class="lp-section-icon icon-bg-trending" aria-hidden="true">🔥</div>
+            <h2 class="lp-section-title">Trending Cards</h2>
+            <span class="lp-section-sub">Hot picks right now</span>
+        </div>
+        {{ m.cardGrid(trending, 'trending', 'ribbon-trending', 'Trending', '🔥', 'Trending cards coming soon.') }}
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ #}
+<footer class="lp-footer">
+    <div class="lp-footer-links">
+        <a href="{{ tracking_url }}" target="_blank" rel="noopener">Application Status</a>
+        <a href="#" class="muted">Privacy Policy</a>
+        <a href="#" class="muted">Terms of Use</a>
+    </div>
+    <p class="lp-footer-copy">{{ brand.footer_text }}</p>
+</footer>
+
+<script>
+(function () {
+    'use strict';
+
+    /* ── Tab switching ── */
+    var tabs   = document.querySelectorAll('.lp-tab-btn');
+    var panels = document.querySelectorAll('.lp-cat-panel');
+
+    tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var cat = btn.getAttribute('data-cat');
+
+            tabs.forEach(function (t) {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+
+            panels.forEach(function (p) { p.classList.remove('active'); });
+
+            var target = document.getElementById('panel-' + cat);
+            if (target) target.classList.add('active');
+        });
+    });
+
+    /* ── View Details accordion ── */
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.lp-btn-details');
+        if (!btn) return;
+
+        var id   = btn.getAttribute('data-target');
+        var feat = document.getElementById(id);
+        if (!feat) return;
+
+        var open = feat.classList.toggle('open');
+        btn.textContent = open ? 'Hide Details' : 'View Details';
+        btn.setAttribute('aria-expanded', String(open));
+    });
+
+    /* ── Image fallback ── */
+    document.querySelectorAll('.lp-card-img-wrap img').forEach(function (img) {
+        img.addEventListener('error', function () {
+            img.style.display = 'none';
+            var fb = img.nextElementSibling;
+            if (fb) fb.style.display = 'flex';
+        });
+    });
+
+})();
+</script>
+
+</body>
+</html>
+
