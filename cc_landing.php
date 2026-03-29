@@ -36,10 +36,11 @@ if (empty($aid)) {
 $CID_CONFIG = [
 
     'findibankit' => [
-        'brand_name'   => 'FindiBankit',
-        'brand_short'  => 'FB',
-        'brand_color'  => '#4f46e5',
-        'brand_color2' => '#7c3aed',
+        'brand_name'      => 'FindiBankit',
+        'brand_short'     => 'FB',
+        'brand_color'     => '#4f46e5',
+        'brand_color2'    => '#7c3aed',
+        'brand_color_rgb' => '79,70,229',
         'tagline'      => 'Find Your Perfect Credit Card',
         'sub_tagline'  => 'Compare top cards & apply in 2 minutes.',
         'logo_url'     => '',
@@ -54,10 +55,11 @@ $CID_CONFIG = [
     ],
 
     'cardkart' => [
-        'brand_name'   => 'CardKart',
-        'brand_short'  => 'CK',
-        'brand_color'  => '#0ea5e9',
-        'brand_color2' => '#0284c7',
+        'brand_name'      => 'CardKart',
+        'brand_short'     => 'CK',
+        'brand_color'     => '#0ea5e9',
+        'brand_color2'    => '#0284c7',
+        'brand_color_rgb' => '14,165,233',
         'tagline'      => 'Smart Cards for Smart People',
         'sub_tagline'  => "India's fastest growing card comparison platform.",
         'logo_url'     => '',
@@ -72,10 +74,11 @@ $CID_CONFIG = [
     ],
 
     'rupeerank' => [
-        'brand_name'   => 'RupeeRank',
-        'brand_short'  => 'RR',
-        'brand_color'  => '#059669',
-        'brand_color2' => '#047857',
+        'brand_name'      => 'RupeeRank',
+        'brand_short'     => 'RR',
+        'brand_color'     => '#059669',
+        'brand_color2'    => '#047857',
+        'brand_color_rgb' => '5,150,105',
         'tagline'      => 'Rank Your Savings Not Your Debt',
         'sub_tagline'  => 'Compare rewards & cashback across top Indian cards.',
         'logo_url'     => '',
@@ -91,10 +94,11 @@ $CID_CONFIG = [
 
     // ── Fallback used when ?cid= is unrecognised ──
     'default' => [
-        'brand_name'   => 'FindiBankit',
-        'brand_short'  => 'FB',
-        'brand_color'  => '#4f46e5',
-        'brand_color2' => '#7c3aed',
+        'brand_name'      => 'FindiBankit',
+        'brand_short'     => 'FB',
+        'brand_color'     => '#4f46e5',
+        'brand_color2'    => '#7c3aed',
+        'brand_color_rgb' => '79,70,229',
         'tagline'      => 'Find Your Perfect Credit Card',
         'sub_tagline'  => 'Compare top cards & apply instantly.',
         'logo_url'     => '',
@@ -169,4 +173,3 @@ if ($product === 'saving') {
     $tpl_data['a_link'] = "https://fintra.co.in/leadgen?cid={$cid}&aid={$aid}&pid=indusind-saving";
     echo $twig->load('landing.saving.twig.html')->render($tpl_data);
 }
-

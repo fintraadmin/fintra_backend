@@ -1,20 +1,45 @@
 <?php
+/**
+ * leadgenpage.php
+ * Lead Capture Form — shown before redirecting user to bank's application page.
+ *
+ * URL: /leadgen?cid=<partner>&aid=<agent_id>&pid=<product_id>
+ */
+
 require_once 'vendor/autoload.php';
+require_once 'apis/dao/CreditCardDAO.php';
+require_once 'config/brand_config.php';
 
 $loader = new Twig_Loader_Filesystem('templates');
-$twig = new Twig_Environment($loader, array(
-    //'cache' => '/tmp/compilation_cache',
-));
+$twig   = new Twig_Environment($loader);
 
+$aid = trim($_REQUEST['aid'] ?? '');
+$cid = trim($_REQUEST['cid'] ?? 'default');
+$pid = trim($_REQUEST['pid'] ?? '');
 
-$template = $twig->load('leadgen.twig.html');
-$aid=$_REQUEST['aid'];
-$cid=$_REQUEST['cid'];
-$pid=$_REQUEST['pid'];
+$brand = getBrand($cid, $aid);
 
-$template_array['redirectURL'] = 'https://fintra.co.in/redir?aid='. $aid. '&cid=' . $cid. '&pid='. $pid;
+// Fetch card details so the template can show the card preview panel
+$card = [];
+if (!empty($pid)) {
+    try {
+        $cDao = new CreditCardDAO();
+        $card = $cDao->getByID($pid) ?? [];
+    } catch (Exception $e) {
+        error_log('[leadgen] card fetch failed: ' . $e->getMessage());
+    }
+}
 
-echo $template->render($template_array);
+// The redirect URL — name/phone/pincode/email are appended by JS after validation
+$redirectURL = 'https://fintra.co.in/redir?aid=' . urlencode($aid)
+             . '&cid=' . urlencode($cid)
+             . '&pid=' . urlencode($pid);
 
-?>
-
+echo $twig->load('leadgen.twig.html')->render([
+    'brand'       => $brand,
+    'cid'         => $cid,
+    'aid'         => $aid,
+    'pid'         => $pid,
+    'card'        => $card,
+    'redirectURL' => $redirectURL,
+]);
