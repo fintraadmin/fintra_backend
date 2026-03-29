@@ -1,330 +1,290 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="--c1:{{ brand.brand_color }};--c2:{{ brand.brand_color2 }};--c1-rgb:{{ brand.brand_color_rgb|default('79,70,229') }};">
 <head>
-
-        <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PKPB77V');</script>
-<!-- End Google Tag Manager -->
-
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PKPB77V');</script>
+    <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Track Credit Card Applications</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <title>Track Applications – {{ brand.brand_name }}</title>
+    {% if brand.favicon_url %}<link rel="icon" href="{{ brand.favicon_url }}">{% endif %}
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            line-height: 1.5;
-            color: #1f2937;
-            background-color: #f3f4f6;
-        }
-
-        .header {
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .page-title {
-            padding: 1rem;
-            background: white;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .page-title h1 {
-            font-size: 1.25rem;
-            color: #1f2937;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-	 .filter-buttons {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            gap: 0.5rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            padding-bottom: 0.5rem;
-        }
-
-        .filter-buttons::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 9999px;
-            background: white;
-            color: #6b7280;
-            font-size: 0.875rem;
-            font-weight: 500;
-            cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-        }
-
-        .filter-btn:hover {
-            border-color: #2563eb;
-            color: #2563eb;
-        }
-
-        .filter-btn.active {
-            background: #2563eb;
-            color: white;
-            border-color: #2563eb;
-        }
-
-        .applications-list {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .application-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .card-image {
-            width: 60px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .card-details {
-            padding: 1rem;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            color: #6b7280;
-            font-size: 0.875rem;
-            flex: 1;
-        }
-
-        .info-value {
-            font-weight: 500;
-            text-align: right;
-            flex: 2;
-        }
-
-        .status-badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-left: auto;
-        }
-
-        .status-badge.new {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-	.status-badge.progress {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-badge.approved {
-            background-color: #dcfce7;
-            color: #166534;
-        }
-
-        .status-badge.rejected {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .comments {
-            color: #6b7280;
-            font-size: 0.875rem;
-            line-height: 1.4;
-        }
-
-        /* Desktop view */
-        @media (min-width: 768px) {
-            .info-row {
-                display: grid;
-                grid-template-columns: 120px 1fr;
-                gap: 1rem;
-            }
-
-            .info-value {
-                text-align: left;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="/assets/css/cc-tracking.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <h1>FindiBankit</h1>
-            </div>
-        </nav>
-    </header>
 
-    <div class="page-title">
-        <h1>Track Applications</h1>
-<!--
-	 <div class="filter-buttons">
-            <button class="filter-btn active" data-status="all">
-                <i class="fas fa-list"></i>
-                All
-            </button>
-            <button class="filter-btn" data-status="new">
-                <i class="fas fa-clock"></i>
-                New
-            </button>
-            <button class="filter-btn" data-status="progress">
-                <i class="fas fa-clock"></i>
-                In Progress
-            </button>
-            <button class="filter-btn" data-status="approved">
-                <i class="fas fa-check-circle"></i>
-                Approved
-            </button>
-            <button class="filter-btn" data-status="rejected">
-                <i class="fas fa-times-circle"></i>
-                Rejected
-            </button>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PKPB77V"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+{# ════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════ #}
+<header class="tr-header">
+    <nav class="tr-nav">
+        <a class="tr-logo" href="{{ brand.landing_url }}">
+            <div class="tr-logomark">
+                {% if brand.logo_url %}
+                    <img src="{{ brand.logo_url }}" alt="{{ brand.brand_name }} logo">
+                {% else %}
+                    {{ brand.brand_short }}
+                {% endif %}
+            </div>
+            <span class="tr-logotext">
+                {{- brand.brand_name|slice(0, brand.brand_name|length - 3) -}}
+                <span>{{ brand.brand_name|slice(-3) }}</span>
+            </span>
+        </a>
+        <a class="tr-back-btn" href="{{ brand.landing_url }}">← Apply Cards</a>
+    </nav>
+</header>
+
+{# ════════════════════════════════════════════
+   HERO BAND — title + summary counts
+════════════════════════════════════════════ #}
+<div class="tr-hero">
+    <div class="tr-hero-inner">
+        <div class="tr-hero-left">
+            <h1>My Applications</h1>
+            <p>Track all your credit card applications in one place</p>
         </div>
--->
-    </div>
-
-    <div class="applications-list">
-	{% for app in applications %}
-        <div class="application-card">
-            <div class="card-header">
-                <img src="{{app.card_image}}" alt="{{app.card_name}}" class="card-image">
-                <div>{{app.card_name}}</div>
+        <div class="tr-stats">
+            <div class="tr-stat">
+                <div class="tr-stat-n">{{ counts.total }}</div>
+                <div class="tr-stat-l">Total</div>
             </div>
-            <div class="card-details">
-                <div class="info-row">
-                    <div class="info-label">Applicant</div>
-                    <div class="info-value">{{app.name}}</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Date Applied</div>
-                    <div class="info-value">{{app.created}}</div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Status</div>
-                    <div class="info-value">
-                        <span class="status-badge {{app.class}}">
-                            <i class="fas fa-clock"></i>
-                            {{app.lead_status}}
-                        </span>
+            {% if counts.approved > 0 %}
+            <div class="tr-stat approved">
+                <div class="tr-stat-n">{{ counts.approved }}</div>
+                <div class="tr-stat-l">Approved</div>
+            </div>
+            {% endif %}
+            {% if counts.new > 0 or counts.progress > 0 %}
+            <div class="tr-stat pending">
+                <div class="tr-stat-n">{{ counts.new + counts.progress }}</div>
+                <div class="tr-stat-l">Pending</div>
+            </div>
+            {% endif %}
+            {% if counts.rejected > 0 %}
+            <div class="tr-stat rejected">
+                <div class="tr-stat-n">{{ counts.rejected }}</div>
+                <div class="tr-stat-l">Rejected</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   FILTER TABS
+════════════════════════════════════════════ #}
+<div class="tr-filters-wrap">
+    <div class="tr-filters" role="tablist">
+        <button class="tr-filter-btn active" data-filter="all" role="tab" aria-selected="true">
+            <span class="f-dot dot-all"></span>
+            All
+            <span class="f-count">{{ counts.total }}</span>
+        </button>
+        {% if counts.new > 0 %}
+        <button class="tr-filter-btn" data-filter="new" role="tab" aria-selected="false">
+            <span class="f-dot dot-new"></span>
+            New
+            <span class="f-count">{{ counts.new }}</span>
+        </button>
+        {% endif %}
+        {% if counts.progress > 0 %}
+        <button class="tr-filter-btn" data-filter="progress" role="tab" aria-selected="false">
+            <span class="f-dot dot-progress"></span>
+            In Progress
+            <span class="f-count">{{ counts.progress }}</span>
+        </button>
+        {% endif %}
+        {% if counts.approved > 0 %}
+        <button class="tr-filter-btn" data-filter="approved" role="tab" aria-selected="false">
+            <span class="f-dot dot-approved"></span>
+            Approved
+            <span class="f-count">{{ counts.approved }}</span>
+        </button>
+        {% endif %}
+        {% if counts.rejected > 0 %}
+        <button class="tr-filter-btn" data-filter="rejected" role="tab" aria-selected="false">
+            <span class="f-dot dot-rejected"></span>
+            Rejected
+            <span class="f-count">{{ counts.rejected }}</span>
+        </button>
+        {% endif %}
+    </div>
+</div>
+
+{# ════════════════════════════════════════════
+   APPLICATION CARDS GRID
+════════════════════════════════════════════ #}
+<div class="tr-grid" id="appGrid">
+
+    {% if applications|length > 0 %}
+        {% for app in applications %}
+
+        {# Determine timeline step classes for each of the 4 steps.
+           Steps: 0=Submitted, 1=Under Review, 2=Approved/Rejected, 3=Dispatched #}
+        {% set step = app.timeline_step %}
+
+        <article class="app-card" data-status="{{ app.class }}">
+
+            {# ── Top: image + card name + status badge ── #}
+            <div class="app-card-top">
+                <div class="app-img-wrap">
+                    <img
+                        src="{{ app.card_image }}"
+                        alt="{{ app.card_name }}"
+                        loading="lazy"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="app-img-fallback" aria-hidden="true">
+                        {{ app.card_name|slice(0,4)|upper }}
                     </div>
                 </div>
-                <div class="info-row">
-                    <div class="info-label">Comments</div>
-                    <div class="info-value comments">
-			{{app.comments}}
+                <div class="app-title-block">
+                    <div class="app-card-name">{{ app.card_name }}</div>
+                    <div class="app-card-date">Applied {{ app.created }}</div>
+                </div>
+                <span class="app-status-badge badge-{{ app.class }}">{{ app.lead_status }}</span>
+            </div>
+
+            {# ── Body: info rows + timeline + comment ── #}
+            <div class="app-card-body">
+
+                <div class="app-info-row">
+                    <span class="app-info-label">Applicant</span>
+                    <span class="app-info-value">{{ app.name }}</span>
+                </div>
+
+                {% if app.mobile is defined and app.mobile %}
+                <div class="app-info-row">
+                    <span class="app-info-label">Mobile</span>
+                    <span class="app-info-value">{{ app.mobile }}</span>
+                </div>
+                {% endif %}
+
+                {# ── Progress timeline ── #}
+                <div class="app-timeline">
+                    <div class="tl-heading">Application Journey</div>
+                    <div class="tl-steps">
+
+                        {# Step 0 – Submitted #}
+                        <div class="tl-step {% if step > 0 %}done{% elseif step == 0 %}current{% endif %}">
+                            <div class="tl-dot"></div>
+                            <div class="tl-step-name">Submitted</div>
+                        </div>
+
+                        {# Step 1 – Under Review #}
+                        <div class="tl-step {% if step > 1 %}done{% elseif step == 1 and not app.is_rejected %}current{% elseif step == 1 and app.is_rejected %}done{% endif %}">
+                            <div class="tl-dot"></div>
+                            <div class="tl-step-name">Under Review</div>
+                        </div>
+
+                        {# Step 2 – Approved or Rejected #}
+                        {% if app.is_rejected %}
+                        <div class="tl-step rejected">
+                            <div class="tl-dot"></div>
+                            <div class="tl-step-name">Rejected</div>
+                        </div>
+                        {% else %}
+                        <div class="tl-step {% if step > 2 %}done{% elseif step == 2 %}current{% endif %}">
+                            <div class="tl-dot"></div>
+                            <div class="tl-step-name">Approved</div>
+                        </div>
+                        {% endif %}
+
+                        {# Step 3 – Dispatched (only shown for non-rejected) #}
+                        {% if not app.is_rejected %}
+                        <div class="tl-step {% if step > 3 %}done{% elseif step == 3 %}current{% endif %}">
+                            <div class="tl-dot"></div>
+                            <div class="tl-step-name">Dispatched</div>
+                        </div>
+                        {% endif %}
+
                     </div>
                 </div>
+
+                {# ── Comments / remarks ── #}
+                {% if app.comments %}
+                <div class="app-comment {% if app.is_rejected %}rejected-comment{% endif %}">
+                    {{ app.comments }}
+                </div>
+                {% endif %}
+
             </div>
+        </article>
+
+        {% endfor %}
+
+    {% else %}
+        <div class="tr-empty">
+            <span class="tr-empty-icon">📋</span>
+            No applications found for this account.
+            <a class="tr-empty-action" href="{{ brand.landing_url }}">Browse Credit Cards →</a>
         </div>
+    {% endif %}
 
-       {% endfor %}
-    </div>
+</div>
 
- <script>
-        document.addEventListener('DOMContentLoaded', function() {
+{# ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ #}
+<footer class="tr-footer">
+    {{ brand.footer_text }}
+</footer>
 
-	setTimeout(function(){
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const applicationCards = document.querySelectorAll('.application-card');
+<script>
+(function () {
+    'use strict';
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Update active button state
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
+    /* ── Filter tabs ── */
+    var filterBtns = document.querySelectorAll('.tr-filter-btn');
+    var appCards   = document.querySelectorAll('.app-card');
 
-                    const selectedStatus = button.dataset.status;
-
-                    // Filter cards
-                    applicationCards.forEach(card => {
-                        if (selectedStatus === 'all') {
-                            card.classList.remove('hidden');
-                            return;
-                        }
-
-                        const cardStatus = card.querySelector('.status-badge').classList
-                            .toString()
-                            .split(' ')
-                            .find(className => ['new', 'progress', 'approved', 'rejected'].includes(className));
-
-                        if (cardStatus === selectedStatus) {
-                            card.classList.remove('hidden');
-                        } else {
-                            card.classList.add('hidden');
-                        }
-                    });
-                });
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            filterBtns.forEach(function (b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
             });
-	}, 10000);
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+
+            var filter = btn.getAttribute('data-filter');
+
+            appCards.forEach(function (card) {
+                var status = card.getAttribute('data-status');
+                if (filter === 'all' || status === filter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
         });
-    </script>
+    });
+
+    /* ── Image fallback ── */
+    document.querySelectorAll('.app-img-wrap img').forEach(function (img) {
+        img.addEventListener('error', function () {
+            img.style.display = 'none';
+            var fb = img.nextElementSibling;
+            if (fb) fb.style.display = 'flex';
+        });
+    });
+
+})();
+</script>
 
 </body>
 </html>
